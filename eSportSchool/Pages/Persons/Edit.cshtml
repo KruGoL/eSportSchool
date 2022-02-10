@@ -1,6 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.Persons.EditModel
-
+@model eSportSchool.Pages.Persons.PersonsPage
 @{
     ViewData["Title"] = "Edit";
 }
@@ -42,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
 </div>
 
 @section Scripts {
