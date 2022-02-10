@@ -1,0 +1,60 @@
+﻿@page
+@model eSportSchool.Pages.Persons.PersonsPage
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" asp-page-handler="Create"> Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>        
+            <th>
+                @Html.DisplayNameFor(model => model.Persons[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persons[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persons[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persons[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persons[0].DoB)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Persons) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoB)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-page-handler="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-page-handler="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

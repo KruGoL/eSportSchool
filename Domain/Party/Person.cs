@@ -21,7 +21,8 @@ namespace eSportSchool.Domain.Party
         public string LastName => _data?.LastName ?? _defaultStr;
         public bool Gender => _data?.Gender ?? _defaultGender;
         public DateTime DoB => _data?.DoB ?? _defaultDate;
-        public override string ToStrnig() => $"{FirstName}{LastName}({Gender},{DoB})";
+        public PersonData Data => _data;
+        public override string ToString() => $"{FirstName}{LastName}({Gender},{DoB})";
 
 
     }
