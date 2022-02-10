@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using eSportSchool.Data;
+using eSportSchool.Facade;
+using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Pages.Persons
 {
@@ -25,7 +27,7 @@ namespace eSportSchool.Pages.Persons
         }
 
         [BindProperty]
-        public Person Person { get; set; }
+        public PersonView Person { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +37,8 @@ namespace eSportSchool.Pages.Persons
                 return Page();
             }
 
-            _context.Person.Add(Person);
+            var d = new PersonViewFactory().Create(Person).Data;
+            _context.Persons.Add(d);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

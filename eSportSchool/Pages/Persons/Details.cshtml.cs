@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
+using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
+using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Pages.Persons
 {
@@ -19,7 +22,7 @@ namespace eSportSchool.Pages.Persons
             _context = context;
         }
 
-        public Person Person { get; set; }
+        public PersonView Person { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -28,12 +31,14 @@ namespace eSportSchool.Pages.Persons
                 return NotFound();
             }
 
-            Person = await _context.Person.FirstOrDefaultAsync(m => m.Id == id);
+            var d = await _context.Persons.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Person == null)
+            if (d == null)
             {
                 return NotFound();
             }
+
+            Person = new PersonViewFactory().Create(new Person(d));
             return Page();
         }
     }

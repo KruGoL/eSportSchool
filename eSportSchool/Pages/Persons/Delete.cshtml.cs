@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
+using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
+using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Pages.Persons
 {
@@ -20,7 +23,7 @@ namespace eSportSchool.Pages.Persons
         }
 
         [BindProperty]
-        public Person Person { get; set; }
+        public PersonView Person { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -29,8 +32,8 @@ namespace eSportSchool.Pages.Persons
                 return NotFound();
             }
 
-            Person = await _context.Person.FirstOrDefaultAsync(m => m.Id == id);
-
+            var d = await _context.Persons.FirstOrDefaultAsync(m => m.Id == id);
+            Person = new PersonViewFactory().Create(new Person(d));
             if (Person == null)
             {
                 return NotFound();
@@ -45,11 +48,11 @@ namespace eSportSchool.Pages.Persons
                 return NotFound();
             }
 
-            Person = await _context.Person.FindAsync(id);
+            var d = await _context.Persons.FindAsync(id);
 
             if (Person != null)
             {
-                _context.Person.Remove(Person);
+                _context.Persons.Remove(d);
                 await _context.SaveChangesAsync();
             }
 

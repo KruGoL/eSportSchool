@@ -10,6 +10,6 @@ namespace eSportSchool.Data
             : base(options)
         {
         }
-        public DbSet<eSportSchool.Data.Person> Person { get; set; }
+        public DbSet<PersonData> Persons { get; set; }
     }
 }

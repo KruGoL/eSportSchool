@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
+using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
+using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Pages.Persons
 {
@@ -19,11 +22,19 @@ namespace eSportSchool.Pages.Persons
             _context = context;
         }
 
-        public IList<Person> Person { get;set; }
+        public IList<PersonView> Person { get;set; }
 
         public async Task OnGetAsync()
         {
-            Person = await _context.Person.ToListAsync();
+            var l = await _context.Persons.ToListAsync();
+            Person = new List<PersonView>();
+            foreach (var personData in l)
+            {
+                var v = new PersonViewFactory().Create(new Person(personData));
+            }
+            {
+                
+            }
         }
     }
 }
