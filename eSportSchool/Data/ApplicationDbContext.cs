@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using eSportSchool.Data;
 
 namespace eSportSchool.Data
 {
@@ -9,5 +10,6 @@ namespace eSportSchool.Data
             : base(options)
         {
         }
+        public DbSet<eSportSchool.Data.Person> Person { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace eSportSchool.Facade
             Gender = o.Gender,
             FirstName = o.FirstName,
             LastName = o.LastName,
-            FullName = o.ToStrnig(),
+            FullName = o.ToString(),
         };
     
     }
