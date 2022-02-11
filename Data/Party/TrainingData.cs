@@ -12,7 +12,6 @@ namespace eSportSchool.Data.Party
         public string? SportTeamId { get; set; }
         public string? Title { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public Exercise? Exercise { get; set; }
 
     }
 

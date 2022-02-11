@@ -17,7 +17,6 @@ namespace eSportSchool.Facade
             SportTeamId = v.SportTeamId,
             Title = v.Title,
             CreatedDate = v.CreatedDate,
-            Exercise = v.Exercise
         });
 
         public TrainingView Create(Training o) => new()
@@ -26,7 +25,6 @@ namespace eSportSchool.Facade
             SportTeamId = o.SportTeamId,
             Title = o.Title,
             CreatedDate = o.CreatedDate,
-            Exercise = o.Exercise,
             FullName = o.ToString()
         };
     }

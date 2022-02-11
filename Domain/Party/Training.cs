@@ -17,7 +17,6 @@ namespace eSportSchool.Domain.Party
         public string SportTeamId => _data?.SportTeamId ?? _defaultStr;
         public string Title => _data?.Title ?? _defaultStr;
         public DateTime CreatedDate => _data?.CreatedDate ?? _defaultDate;
-        public Exercise Exercise => _data?.Exercise ?? new Exercise(Data, "");
         public override string ToString() => $"{Title} ({CreatedDate})";
     }
 }
