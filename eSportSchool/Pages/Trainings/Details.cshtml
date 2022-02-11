@@ -1,5 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.Trainings.DetailsModel
+@model eSportSchool.Pages.Trainings.TrainingsPage
 
 @{
     ViewData["Title"] = "Details";
@@ -12,26 +12,26 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TrainingData.SportTeamId)
+            @Html.DisplayNameFor(model => model.Training.SportTeamId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TrainingData.SportTeamId)
+            @Html.DisplayFor(model => model.Training.SportTeamId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TrainingData.Title)
+            @Html.DisplayNameFor(model => model.Training.Title)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TrainingData.Title)
+            @Html.DisplayFor(model => model.Training.Title)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TrainingData.CreatedDate)
+            @Html.DisplayNameFor(model => model.Training.CreatedDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TrainingData.CreatedDate)
+            @Html.DisplayFor(model => model.Training.CreatedDate)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.TrainingData.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Training.Id">Edit</a> |
+    <a asp-page="./Index" asp-page-handler="Index" >Back to List</a>
 </div>

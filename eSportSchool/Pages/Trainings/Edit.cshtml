@@ -1,5 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.Trainings.EditModel
+@model eSportSchool.Pages.Trainings.TrainingsPage
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,21 +13,21 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="TrainingData.Id" />
+            <input type="hidden" asp-for="Training.Id" />
             <div class="form-group">
-                <label asp-for="TrainingData.SportTeamId" class="control-label"></label>
-                <input asp-for="TrainingData.SportTeamId" class="form-control" />
-                <span asp-validation-for="TrainingData.SportTeamId" class="text-danger"></span>
+                <label asp-for="Training.SportTeamId" class="control-label"></label>
+                <input asp-for="Training.SportTeamId" class="form-control" />
+                <span asp-validation-for="Training.SportTeamId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TrainingData.Title" class="control-label"></label>
-                <input asp-for="TrainingData.Title" class="form-control" />
-                <span asp-validation-for="TrainingData.Title" class="text-danger"></span>
+                <label asp-for="Training.Title" class="control-label"></label>
+                <input asp-for="Training.Title" class="form-control" />
+                <span asp-validation-for="Training.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TrainingData.CreatedDate" class="control-label"></label>
-                <input asp-for="TrainingData.CreatedDate" class="form-control" />
-                <span asp-validation-for="TrainingData.CreatedDate" class="text-danger"></span>
+                <label asp-for="Training.CreatedDate" class="control-label"></label>
+                <input asp-for="Training.CreatedDate" class="form-control" />
+                <span asp-validation-for="Training.CreatedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -37,7 +37,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
 </div>
 
 @section Scripts {
