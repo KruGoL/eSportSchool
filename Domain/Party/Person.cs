@@ -16,6 +16,7 @@ namespace eSportSchool.Domain.Party
 
         public Person ():this (new PersonData()){}
         public Person(PersonData d) => _data = d;
+
         public string Id => _data?.Id ?? _defaultStr;
         public string FirstName => _data?.FirstName ?? _defaultStr;
         public string LastName => _data?.LastName ?? _defaultStr;
