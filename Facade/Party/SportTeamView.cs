@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Microsoft.Build.Framework;
 
 namespace eSportSchool.Facade.Party
@@ -15,6 +10,6 @@ namespace eSportSchool.Facade.Party
         [DisplayName("Team name")] public string? Title { get; set; }
         [DisplayName("Team created")] public DateTime? CreatedDate { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
-
+        [DisplayName("Full name")] public string? FullName { get; set; }
     }
 }
