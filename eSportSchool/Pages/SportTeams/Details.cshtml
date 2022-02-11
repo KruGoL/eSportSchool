@@ -1,5 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.SportTeams.DetailsModel
+@model eSportSchool.Pages.SportTeams.SportTeamsPage
 
 @{
     ViewData["Title"] = "Details";
@@ -12,32 +12,32 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SportTeamData.OwnerId)
+            @Html.DisplayNameFor(model => model.SportTeam.OwnerId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SportTeamData.OwnerId)
+            @Html.DisplayFor(model => model.SportTeam.OwnerId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SportTeamData.Title)
+            @Html.DisplayNameFor(model => model.SportTeam.Title)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SportTeamData.Title)
+            @Html.DisplayFor(model => model.SportTeam.Title)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SportTeamData.CreatedDate)
+            @Html.DisplayNameFor(model => model.SportTeam.CreatedDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SportTeamData.CreatedDate)
+            @Html.DisplayFor(model => model.SportTeam.CreatedDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SportTeamData.Description)
+            @Html.DisplayNameFor(model => model.SportTeam.Description)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SportTeamData.Description)
+            @Html.DisplayFor(model => model.SportTeam.Description)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.SportTeamData.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.SportTeam.Id">Edit</a> |
+    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
 </div>
