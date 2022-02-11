@@ -1,0 +1,43 @@
+﻿@page
+@model eSportSchool.Pages.SportTeams.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SportTeamData</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportTeamData.OwnerId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportTeamData.OwnerId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportTeamData.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportTeamData.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportTeamData.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportTeamData.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportTeamData.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportTeamData.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SportTeamData.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

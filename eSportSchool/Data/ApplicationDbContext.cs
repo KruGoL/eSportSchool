@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
+using eSportSchool.Data.Party;
 
 namespace eSportSchool.Data
 {
@@ -11,5 +12,6 @@ namespace eSportSchool.Data
         {
         }
         public DbSet<PersonData> Persons { get; set; }
+        public DbSet<eSportSchool.Data.Party.SportTeamData> SportTeamData { get; set; }
     }
 }
