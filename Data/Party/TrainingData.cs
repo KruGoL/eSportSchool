@@ -12,7 +12,20 @@ namespace eSportSchool.Data.Party
         public string? SportTeamId { get; set; }
         public string? Title { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public List<string>? Exercises { get; set; }
+        public Exercise? Exercise { get; set; }
 
     }
+
+    public class Exercise : TrainingData
+    {
+        public string? TrainingId { get; set; }
+        public string? Description { get; set; }
+
+        public Exercise(TrainingData trainingData, string description)
+        {
+            TrainingId=trainingData.Id;
+            Description=description;
+        }
+    }
+
 }
