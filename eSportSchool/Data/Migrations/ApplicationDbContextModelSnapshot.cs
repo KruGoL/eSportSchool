@@ -44,6 +44,25 @@ namespace eSportSchool.Data.Migrations
                     b.ToTable("SportTeamData");
                 });
 
+            modelBuilder.Entity("eSportSchool.Data.Party.TrainingData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SportTeamId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrainingData");
+                });
+
             modelBuilder.Entity("eSportSchool.Data.PersonData", b =>
                 {
                     b.Property<string>("Id")

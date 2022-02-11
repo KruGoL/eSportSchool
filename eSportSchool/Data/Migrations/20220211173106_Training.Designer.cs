@@ -12,8 +12,8 @@ using eSportSchool.Data;
 namespace eSportSchool.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220211123428_SportTeam")]
-    partial class SportTeam
+    [Migration("20220211173106_Training")]
+    partial class Training
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,25 @@ namespace eSportSchool.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SportTeamData");
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.Party.TrainingData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SportTeamId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrainingData");
                 });
 
             modelBuilder.Entity("eSportSchool.Data.PersonData", b =>
