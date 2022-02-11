@@ -13,5 +13,6 @@ namespace eSportSchool.Data
         }
         public DbSet<PersonData> Persons { get; set; }
         public DbSet<SportTeamData> SportTeamData { get; set; }
+        public DbSet<TrainingData> TrainingData { get; set; }
     }
 }
