@@ -15,6 +15,7 @@ namespace eSportSchool.Pages.Trainings
         [BindProperty] public TrainingView Training { get; set; }
         public TrainingsPage(ApplicationDbContext c) => context = c;
         public IList<TrainingView> TrainingsList { get; set;}
+        public IList<ExerciseView> ExercisesList { get; set; }
 
         public async Task OnGetIndexAsync()
         {
@@ -87,7 +88,19 @@ namespace eSportSchool.Pages.Trainings
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
             Training = await GetTraining(id);
-            return Training==null ? NotFound() : Page();
+            if (Training == null)
+            {
+                return NotFound();
+            }
+            var l = await context.ExerciseData.ToListAsync();
+            ExercisesList = new List<ExerciseView>();
+            foreach (var item in l)
+            {
+                var v = new ExerciseViewFactory().Create(new Exercise(item));
+                v.TrainingId = Training.Id;
+                ExercisesList.Add(v);
+            }
+            return  Page();
         }
         public async Task<IActionResult> OnPostEditAsync()
         {

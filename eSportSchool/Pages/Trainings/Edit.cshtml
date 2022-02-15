@@ -1,6 +1,5 @@
 ﻿@page
 @model eSportSchool.Pages.Trainings.TrainingsPage
-
 @{
     ViewData["Title"] = "Edit";
 }
@@ -28,6 +27,31 @@
                 <label asp-for="Training.CreatedDate" class="control-label"></label>
                 <input asp-for="Training.CreatedDate" class="form-control" />
                 <span asp-validation-for="Training.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ExercisesList[0].ExerciseTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ExercisesList[0].Description)
+                    </th>
+                </tr>
+            @foreach (var item in Model.ExercisesList) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExerciseTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
