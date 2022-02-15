@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eSportSchool.Data;
 
@@ -11,9 +12,10 @@ using eSportSchool.Data;
 namespace eSportSchool.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220215122547_Exercises")]
+    partial class Exercises
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,26 +23,6 @@ namespace eSportSchool.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("eSportSchool.Data.Party.ExerciseData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExerciseTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TrainingId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExerciseData");
-                });
 
             modelBuilder.Entity("eSportSchool.Data.Party.SportTeamData", b =>
                 {
@@ -72,6 +54,10 @@ namespace eSportSchool.Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SportTeamId")
                         .HasColumnType("nvarchar(max)");
 
@@ -81,6 +67,8 @@ namespace eSportSchool.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TrainingData");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("TrainingData");
                 });
 
             modelBuilder.Entity("eSportSchool.Data.PersonData", b =>
@@ -305,6 +293,23 @@ namespace eSportSchool.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.Party.ExerciseData", b =>
+                {
+                    b.HasBaseType("eSportSchool.Data.Party.TrainingData");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExerciseId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExerciseTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("ExerciseData");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -14,17 +14,4 @@ namespace eSportSchool.Data.Party
         public DateTime? CreatedDate { get; set; }
 
     }
-
-    public class Exercise : TrainingData
-    {
-        public string? TrainingId { get; set; }
-        public string? Description { get; set; }
-
-        public Exercise(TrainingData trainingData, string description)
-        {
-            TrainingId=trainingData.Id;
-            Description=description;
-        }
-    }
-
 }
