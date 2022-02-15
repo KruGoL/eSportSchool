@@ -2,7 +2,7 @@
 
 namespace eSportSchool.Domain.Party
 {
-    public class Exercise:Training
+    public class Exercise
     {
         private const string _defaultStr = "Undefined";
         private ExerciseData _data;
@@ -12,6 +12,7 @@ namespace eSportSchool.Domain.Party
         public ExerciseData Data => _data;
 
         public string ExerciseId => _data?.ExerciseId ?? _defaultStr;
+        public string TrainingId => _data?.TrainingId?? _defaultStr;
         public string ExerciseTitle => _data?.ExerciseTitle?? _defaultStr;
         public string Description => _data?.Description ?? _defaultStr;
     }

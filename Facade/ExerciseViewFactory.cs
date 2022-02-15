@@ -5,11 +5,12 @@ using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Facade
 {
-    public class ExerciseViewFactory : TrainingViewFactory
+    public class ExerciseViewFactory 
     {
         public Exercise Create(ExerciseView v) => new(new ExerciseData()
         {
             ExerciseId = v.ExerciseId,
+            TrainingId = v.TrainingId,
             ExerciseTitle = v.ExerciseTitle,
             Description = v.Description,
         });
@@ -17,6 +18,7 @@ namespace eSportSchool.Facade
         public ExerciseView Create(Exercise o) => new()
         {
             ExerciseId = o.ExerciseId,
+            TrainingId = o.TrainingId,
             ExerciseTitle = o.ExerciseTitle,
             Description = o.Description,
         };
