@@ -1,5 +1,4 @@
-﻿
-using eSportSchool.Data.Party;
+﻿using eSportSchool.Data.Party;
 
 namespace eSportSchool.Domain.Party
 {
