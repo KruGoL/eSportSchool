@@ -9,7 +9,7 @@ namespace eSportSchool.Facade
     {
         public Exercise Create(ExerciseView v) => new(new ExerciseData()
         {
-            ExerciseId = v.ExerciseId,
+            Id = v.Id,
             TrainingId = v.TrainingId,
             ExerciseTitle = v.ExerciseTitle,
             Description = v.Description,
@@ -17,7 +17,7 @@ namespace eSportSchool.Facade
 
         public ExerciseView Create(Exercise o) => new()
         {
-            ExerciseId = o.ExerciseId,
+            Id = o.Id,
             TrainingId = o.TrainingId,
             ExerciseTitle = o.ExerciseTitle,
             Description = o.Description,

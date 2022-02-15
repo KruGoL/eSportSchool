@@ -11,7 +11,7 @@ namespace eSportSchool.Domain.Party
         public Exercise(ExerciseData d)=> _data=d;
         public ExerciseData Data => _data;
 
-        public string ExerciseId => _data?.ExerciseId ?? _defaultStr;
+        public string Id => _data?.Id ?? _defaultStr;
         public string TrainingId => _data?.TrainingId?? _defaultStr;
         public string ExerciseTitle => _data?.ExerciseTitle?? _defaultStr;
         public string Description => _data?.Description ?? _defaultStr;

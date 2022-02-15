@@ -10,7 +10,7 @@ namespace eSportSchool.Facade.Party
 {
     public class ExerciseView 
     {
-        [Required] public string ExerciseId { get; set; }
+        [Required] public string Id { get; set; }
         [Required] public string TrainingId { get; set; }
         [DisplayName("Title")] public string ExerciseTitle { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
