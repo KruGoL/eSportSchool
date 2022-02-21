@@ -9,10 +9,10 @@ using eSportSchool.Data;
 
 #nullable disable
 
-namespace eSportSchool.Data.Migrations
+namespace eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220210193735_init")]
+    [Migration("20220221131737_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,68 @@ namespace eSportSchool.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("eSportSchool.Data.Person", b =>
+            modelBuilder.Entity("eSportSchool.Data.Party.ExerciseData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExerciseTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainingId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExerciseData");
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.Party.SportTeamData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SportTeamData");
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.Party.TrainingData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SportTeamId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrainingData");
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.TrainerData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -43,7 +104,7 @@ namespace eSportSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Person");
+                    b.ToTable("TrainerData");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -6,9 +6,9 @@ using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Facade
 {
-    public class PersonViewFactory
+    public class TrainerViewFactory
     {
-        public Person Create(PersonView v) => new(new PersonData() {
+        public Trainer Create(TrainerView v) => new(new TrainerData() {
             Id = v.Id,
             DoB = v.DoB,
             Gender = v.Gender,
@@ -16,7 +16,7 @@ namespace eSportSchool.Facade
             LastName = v.LastName
         });
     
-        public PersonView Create(Person o)=> new() {
+        public TrainerView Create(Trainer o)=> new() {
             Id = o.Id,
             DoB = o.DoB,
             Gender = o.Gender,
