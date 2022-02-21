@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace eSportSchool.Data.Party
+namespace eSportSchool.Data.Preparation
 {
     public class ExerciseData 
     {

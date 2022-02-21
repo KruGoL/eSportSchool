@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eSportSchool.Data.Party
+namespace eSportSchool.Data.Preparation
 {
     public class TrainingData
     { 

@@ -2,7 +2,7 @@
 using eSportSchool.Data.Party;
 using Microsoft.Build.Framework;
 
-namespace eSportSchool.Facade.Party
+namespace eSportSchool.Facade.Preparation
 {
     public class TrainingView
     {

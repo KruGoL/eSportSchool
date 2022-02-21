@@ -1,54 +1,12 @@
 ﻿@page
 @model eSportSchool.Pages.Trainers.TrainersPage
+@using eSportSchool.Pages.Extensions
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "_Create";
 }
 
-<h1>Create</h1>
-
-<h4>Person</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-page-handler="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Trainer.Id" class="control-label"></label>
-                <input asp-for="Trainer.Id" class="form-control" />
-                <span asp-validation-for="Trainer.Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trainer.FirstName" class="control-label"></label>
-                <input asp-for="Trainer.FirstName" class="form-control" />
-                <span asp-validation-for="Trainer.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trainer.LastName" class="control-label"></label>
-                <input asp-for="Trainer.LastName" class="form-control" />
-                <span asp-validation-for="Trainer.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trainer.Gender" class="control-label"></label>
-                <input asp-for="Trainer.Gender" class="form-control" />
-                <span asp-validation-for="Trainer.Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trainer.DoB" class="control-label"></label>
-                <input asp-for="Trainer.DoB" class="form-control" />
-                <span asp-validation-for="Trainer.DoB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index" asp-page-handler="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<body>
+    @Html.MyEditorFor(m => m.Trainer.Id)
+    <partial name="_EditTrainer" />
+</body>

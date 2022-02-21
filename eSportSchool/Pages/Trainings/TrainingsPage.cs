@@ -1,7 +1,8 @@
 ﻿using eSportSchool.Data;
-using eSportSchool.Domain.Party;
-using eSportSchool.Facade;
-using eSportSchool.Facade.Party;
+using eSportSchool.Domain.Preparation;
+using eSportSchool.Facade.Preparation;
+using eSportSchool.Facade.Preparation.PreparationViewFactory;
+using eSportSchool.Facade.PreparationViewFactory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;

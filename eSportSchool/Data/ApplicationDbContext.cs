@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using eSportSchool.Data;
 using eSportSchool.Data.Party;
+using eSportSchool.Data.Preparation;
 
 namespace eSportSchool.Data
 {
