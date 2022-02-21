@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eSportSchool.Data
 {
-    public class PersonData
+    public class TrainerData
     {
         public string Id { get; set; }
         public string? FirstName { get; set; }

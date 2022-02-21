@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eSportSchool.Facade.Party
 {
-    public class PersonView
+    public class TrainerView
     {
         [Required] public string Id { get; set; }
         [DisplayName("First name")] public string? FirstName { get; set; }

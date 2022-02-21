@@ -1,5 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.Persons.PersonsPage
+@model eSportSchool.Pages.Trainers.TrainersPage
 
 @{
     ViewData["Title"] = "Index";
@@ -14,25 +14,25 @@
     <thead>
         <tr>        
             <th>
-                @Html.DisplayNameFor(model => model.Persons[0].FullName)
+                @Html.DisplayNameFor(model => model.TrainersList[0].FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Persons[0].FirstName)
+                @Html.DisplayNameFor(model => model.TrainersList[0].FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Persons[0].LastName)
+                @Html.DisplayNameFor(model => model.TrainersList[0].LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Persons[0].Gender)
+                @Html.DisplayNameFor(model => model.TrainersList[0].Gender)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Persons[0].DoB)
+                @Html.DisplayNameFor(model => model.TrainersList[0].DoB)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Persons) {
+@foreach (var item in Model.TrainersList) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)

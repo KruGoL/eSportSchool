@@ -1,5 +1,4 @@
 ﻿using eSportSchool.Data;
-using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
 using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
@@ -97,8 +96,11 @@ namespace eSportSchool.Pages.Trainings
             foreach (var item in l)
             {
                 var v = new ExerciseViewFactory().Create(new Exercise(item));
-                v.TrainingId = Training.Id;
-                ExercisesList.Add(v);
+                if (v.TrainingId == Training.Id)
+                {
+                    v.TrainingId = Training.Id;
+                    ExercisesList.Add(v);
+                }
             }
             return  Page();
         }

@@ -11,9 +11,9 @@ namespace eSportSchool.Data
             : base(options)
         {
         }
-        public DbSet<PersonData> Persons { get; set; }
+        public DbSet<TrainerData> TrainerData { get; set; }
         public DbSet<SportTeamData> SportTeamData { get; set; }
         public DbSet<TrainingData> TrainingData { get; set; }
-        public DbSet<eSportSchool.Data.Party.ExerciseData> ExerciseData { get; set; }
+        public DbSet<ExerciseData> ExerciseData { get; set; }
     }
 }
