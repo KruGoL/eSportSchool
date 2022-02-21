@@ -3,7 +3,7 @@ using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
 
-namespace eSportSchool.Facade
+namespace eSportSchool.Facade.Party.PartyViewFactory
 {
     public class SportTeamViewFactory
     {

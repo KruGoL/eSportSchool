@@ -1,7 +1,7 @@
 ﻿using eSportSchool.Data;
 using eSportSchool.Domain.Party;
-using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
+using eSportSchool.Facade.Party.PartyViewFactory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;

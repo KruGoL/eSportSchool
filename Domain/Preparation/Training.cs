@@ -1,6 +1,6 @@
-﻿using eSportSchool.Data.Party;
+﻿using eSportSchool.Data.Preparation;
 
-namespace eSportSchool.Domain.Party
+namespace eSportSchool.Domain.Preparation
 {
     public class Training
     {

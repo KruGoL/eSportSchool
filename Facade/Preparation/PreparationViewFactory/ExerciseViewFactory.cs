@@ -1,9 +1,9 @@
 ﻿
-using eSportSchool.Data.Party;
-using eSportSchool.Domain.Party;
-using eSportSchool.Facade.Party;
+using eSportSchool.Data.Preparation;
+using eSportSchool.Domain.Preparation;
+using eSportSchool.Facade.Preparation;
 
-namespace eSportSchool.Facade
+namespace eSportSchool.Facade.PreparationViewFactory
 {
     public class ExerciseViewFactory 
     {

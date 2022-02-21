@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eSportSchool.Data.Party;
-using eSportSchool.Domain.Party;
-using eSportSchool.Facade.Party;
+﻿
+using eSportSchool.Data.Preparation;
+using eSportSchool.Domain.Preparation;
+using eSportSchool.Facade.Preparation;
 
-namespace eSportSchool.Facade
+namespace eSportSchool.Facade.Preparation.PreparationViewFactory
 {
     public class TrainingViewFactory
     {
