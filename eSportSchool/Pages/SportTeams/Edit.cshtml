@@ -1,12 +1,10 @@
 ﻿@page
 @model eSportSchool.Pages.SportTeams.SportTeamsPage
-@using eSportSchool.Pages.Extensions
 @{
     Layout = "_Edit";
 }
 
 <body>
-    @Html.MyEditorFor(m => m.SportTeam.Id)
-    @Html.MyEditorFor(m => m.SportTeam.OwnerId)
-<partial name="_EditSportTeam" />
+<input type="hidden" asp-for="SportTeam.Id"/>   
+<partial name="_EditSportTeam"/>
 </body>

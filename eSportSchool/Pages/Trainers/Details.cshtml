@@ -2,24 +2,10 @@
 @model eSportSchool.Pages.Trainers.TrainersPage
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Details";
+    ViewData["Id"] = Model?.Trainer.Id ?? string.Empty;
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Trainer</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Trainer.FullName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Trainer.FullName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Trainer.Id">Edit</a> |
-    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
-</div>
+<body>
+<partial name="_ShowTrainer"/>
+</body>
