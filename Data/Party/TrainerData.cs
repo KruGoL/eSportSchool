@@ -1,4 +1,4 @@
-﻿namespace eSportSchool.Data
+﻿namespace eSportSchool.Data.Party
 {
     public class TrainerData
     {

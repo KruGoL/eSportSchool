@@ -1,5 +1,5 @@
 ﻿
-using eSportSchool.Data;
+using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Facade.Party.PartyViewFactory
