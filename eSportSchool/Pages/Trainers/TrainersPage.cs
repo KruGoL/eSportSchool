@@ -2,6 +2,7 @@
 using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
 using eSportSchool.Facade.Party.PartyViewFactory;
+using eSportSchool.Infra.Party;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,57 +10,27 @@ using Microsoft.EntityFrameworkCore;
 namespace eSportSchool.Pages.Trainers
 {
     public class TrainersPage:PageModel
-    {   // TODO To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        // TODO To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        private readonly ApplicationDbContext context; 
+    {
+        private readonly ITrainersRepo repo;
         [BindProperty] public TrainerView Trainer { get; set; }
         public IList<TrainerView> TrainersList { get; set; }
-        public TrainersPage(ApplicationDbContext c) =>context = c;
-        public IActionResult OnGetCreate() { return Page(); }
+        public TrainersPage(ApplicationDbContext c) => repo = new TrainersRepo(c, c.TrainerData);
+        public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var d = new TrainerViewFactory().Create(Trainer).Data;
-            context.TrainerData.Add(d);
-            await context.SaveChangesAsync();
-
-            return RedirectToPage("./Index" , "Index");
+            if (!ModelState.IsValid) return Page();
+            await repo.AddAsync(new TrainerViewFactory().Create(Trainer));
+            return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var d = await context.TrainerData.FirstOrDefaultAsync(m => m.Id == id);
-            Trainer = new TrainerViewFactory().Create(new Trainer(d));
-            if (Trainer == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            Trainer = await GetPerson(id);
+            return Trainer == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var d = await context.TrainerData.FindAsync(id);
-
-            if (Trainer != null)
-            {
-                context.TrainerData.Remove(d);
-                await context.SaveChangesAsync();
-            }
-
+            if (id == null) return NotFound();
+            await repo.DeleteAsync(id);
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
@@ -67,13 +38,7 @@ namespace eSportSchool.Pages.Trainers
             Trainer = await GetPerson(id);
             return Trainer == null? NotFound():Page();
         }
-        private async Task<TrainerView> GetPerson(string id)
-        {
-            if (id == null) return null;
-            var d = await context.TrainerData.FirstOrDefaultAsync(m => m.Id == id);
-            if (d == null) return null;
-            return new TrainerViewFactory().Create(new Trainer(d));
-        }
+        private async Task<TrainerView> GetPerson(string id) => new TrainerViewFactory().Create(await repo.GetAsync(id));
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
             Trainer = await GetPerson(id);
@@ -81,42 +46,22 @@ namespace eSportSchool.Pages.Trainers
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var d = new TrainerViewFactory().Create(Trainer).Data;
-            context.Attach(d).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonExists(Trainer.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            if (!ModelState.IsValid) return Page();
+            var obj = new TrainerViewFactory().Create(Trainer);
+            var updated = await repo.UpdateAsync(obj);
+            if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
-        private bool PersonExists(string id) => context.TrainerData.Any(e => e.Id == id);
-        public async Task OnGetIndexAsync()
+        public async Task<IActionResult> OnGetIndexAsync()
         {
-            var l = await context.TrainerData.ToListAsync();
+            var list = await repo.GetAsync();
             TrainersList = new List<TrainerView>();
-            foreach (var personData in l)
+            foreach (var obj in list)
             {
-                var v = new TrainerViewFactory().Create(new Trainer(personData));
+                var v = new TrainerViewFactory().Create(obj);
                 TrainersList.Add(v);
             }
+            return Page();
         }
     }
 }
