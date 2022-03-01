@@ -2,6 +2,7 @@
 using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
 using eSportSchool.Facade.Party.PartyViewFactory;
+using eSportSchool.Infra.Party;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,57 +11,26 @@ namespace eSportSchool.Pages.SportTeams
 {
     public class SportTeamsPage :PageModel
     {
-        // TODO To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        // TODO To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        private readonly ApplicationDbContext context;
+        private readonly ISportTeamsRepo repo;
         [BindProperty] public SportTeamView SportTeam { get; set; }
         public IList<SportTeamView> SportTeams { get; set; }
-        public SportTeamsPage(ApplicationDbContext c) => context = c;
-        public IActionResult OnGetCreate() { return Page(); }
+        public SportTeamsPage(ApplicationDbContext c) => repo = new SportTeamsRepo(c, c.SportTeamData);
+        public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var d = new SportTeamViewFactory().Create(SportTeam).Data;
-            context.SportTeamData.Add(d);
-            await context.SaveChangesAsync();
-
+            if (!ModelState.IsValid) return Page();
+            await repo.AddAsync(new SportTeamViewFactory().Create(SportTeam));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var d = await context.SportTeamData.FirstOrDefaultAsync(m => m.Id == id);
-            SportTeam = new SportTeamViewFactory().Create(new SportTeam(d));
-            if (SportTeam == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            SportTeam = await GetSportTeam(id);
+            return SportTeam == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var d = await context.SportTeamData.FindAsync(id);
-
-            if (SportTeam != null)
-            {
-                context.SportTeamData.Remove(d);
-                await context.SaveChangesAsync();
-            }
-
+            if (id == null) return NotFound();
+            await repo.DeleteAsync(id);
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
@@ -68,13 +38,7 @@ namespace eSportSchool.Pages.SportTeams
             SportTeam = await GetSportTeam(id);
             return SportTeam == null ? NotFound() : Page();
         }
-        private async Task<SportTeamView> GetSportTeam(string id)
-        {
-            if (id == null) return null;
-            var d = await context.SportTeamData.FirstOrDefaultAsync(m => m.Id == id);
-            if (d == null) return null;
-            return new SportTeamViewFactory().Create(new SportTeam(d));
-        }
+        private async Task<SportTeamView> GetSportTeam(string id) => new SportTeamViewFactory().Create(await repo.GetAsync(id));
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
             SportTeam = await GetSportTeam(id);
@@ -82,42 +46,23 @@ namespace eSportSchool.Pages.SportTeams
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var d = new SportTeamViewFactory().Create(SportTeam).Data;
-            context.Attach(d).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SportTeamExists(SportTeam.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            if (!ModelState.IsValid) return Page();
+            var obj = new SportTeamViewFactory().Create(SportTeam);
+            var updated = await repo.UpdateAsync(obj);
+            if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
+        
         }
-        private bool SportTeamExists(string id) => context.SportTeamData.Any(e => e.Id == id);
-        public async Task OnGetIndexAsync()
+        public async Task<IActionResult> OnGetIndexAsync()
         {
-            var l = await context.SportTeamData.ToListAsync();
+            var list = await repo.GetAsync();
             SportTeams = new List<SportTeamView>();
-            foreach (var item in l)
+            foreach (var obj in list)
             {
-                var v = new SportTeamViewFactory().Create(new SportTeam(item));
+                var v = new SportTeamViewFactory().Create(obj);
                 SportTeams.Add(v);
             }
+            return Page();
         }
     }
 }
