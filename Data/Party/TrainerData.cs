@@ -1,8 +1,7 @@
 ﻿namespace eSportSchool.Data.Party
 {
-    public class TrainerData
+    public class TrainerData : EntityData
     {
-        public string Id { get; set; }
         public string? FirstName { get; set; }
         public  string? LastName { get; set; }
         public bool? Gender { get; set; }
