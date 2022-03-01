@@ -7,21 +7,19 @@ using eSportSchool.Data.Party;
 
 namespace eSportSchool.Domain.Party
 {
-    public class SportTeam
+    public class SportTeam : Entity<SportTeamData>
     {
         private const string _defaultStr = "Undefined";
         private DateTime _defaultDate => DateTime.Now;
-        private SportTeamData _data;
 
         public SportTeam():this(new SportTeamData()){}
-        public SportTeam(SportTeamData d)=> _data = d;
+        public SportTeam(SportTeamData d) : base(d){}
 
-        public string Id => _data?.Id ?? _defaultStr;
-        public string OwnerId => _data?.OwnerId ?? _defaultStr;
-        public string Title => _data?.Title ?? _defaultStr;
-        public string Description => _data?.Description ?? "";
-        public DateTime CreatedDate => _data?.CreatedDate ?? _defaultDate;
-        public SportTeamData Data => _data;
+        public string Id => Data?.Id ?? _defaultStr;
+        public string OwnerId => Data?.OwnerId ?? _defaultStr;
+        public string Title => Data?.Title ?? _defaultStr;
+        public string Description => Data?.Description ?? "";
+        public DateTime CreatedDate => Data?.CreatedDate ?? _defaultDate;
         public override string ToString() => $"{Title} ({CreatedDate})";
 
     }
