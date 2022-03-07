@@ -5,7 +5,6 @@ using eSportSchool.Facade.Party.PartyViewFactory;
 using eSportSchool.Infra.Party;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace eSportSchool.Pages.Trainers
 {
