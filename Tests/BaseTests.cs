@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace eSportSchool.Tests
 {
-    public abstract class BaseTests<TClass> : AssertTests where TClass : class, new()
+    public abstract class BaseTests<TClass> : TestAsserts where TClass : class, new()
     {
         protected TClass obj;
         protected BaseTests() => obj = new TClass();
