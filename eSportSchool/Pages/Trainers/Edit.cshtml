@@ -1,10 +1,11 @@
 ﻿@page
 @model eSportSchool.Pages.Trainers.TrainersPage
 @{
-    Layout = "_Edit";
+    Layout = "_CreateEdit";
+    ViewData["Title"] = "Edit";
 }
 
 <body>
-<input type="hidden" asp-for="Trainer.Id"/>   
-<partial name="_EditTrainer"/>
+    <input type="hidden" asp-for="Trainer.Id"/>   
+    <partial name="_EditTrainer"/>
 </body>
