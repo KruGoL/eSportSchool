@@ -1,6 +1,6 @@
 ﻿namespace eSportSchool.Data.Party
 {
-    public class TrainerData : EntityData
+    public sealed class TrainerData : EntityData
     {
         public string? FirstName { get; set; }
         public  string? LastName { get; set; }

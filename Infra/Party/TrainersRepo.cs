@@ -6,7 +6,7 @@ namespace eSportSchool.Infra.Party
 {
     public class TrainersRepo : Repo<Trainer, TrainerData>, ITrainersRepo
     {
-        public TrainersRepo(DbContext c, DbSet<TrainerData> s) : base(c, s) { }
-        protected override Trainer toDomain(TrainerData d) => new Trainer(d);
+        public TrainersRepo(eSportSchoolDB db) : base(db, db.Trainers) { }
+        protected override Trainer toDomain(TrainerData d) => new (d);
     }
 }

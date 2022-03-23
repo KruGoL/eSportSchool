@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eSportSchool.Migrations
 {
-    public partial class init : Migration
+    public partial class initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "eSportSchool");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -63,7 +66,8 @@ namespace eSportSchool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SportTeamData",
+                name: "SportTeams",
+                schema: "eSportSchool",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -74,11 +78,12 @@ namespace eSportSchool.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SportTeamData", x => x.Id);
+                    table.PrimaryKey("PK_SportTeams", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TrainerData",
+                name: "Trainers",
+                schema: "eSportSchool",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -89,7 +94,7 @@ namespace eSportSchool.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TrainerData", x => x.Id);
+                    table.PrimaryKey("PK_Trainers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,10 +278,12 @@ namespace eSportSchool.Migrations
                 name: "ExerciseData");
 
             migrationBuilder.DropTable(
-                name: "SportTeamData");
+                name: "SportTeams",
+                schema: "eSportSchool");
 
             migrationBuilder.DropTable(
-                name: "TrainerData");
+                name: "Trainers",
+                schema: "eSportSchool");
 
             migrationBuilder.DropTable(
                 name: "TrainingData");

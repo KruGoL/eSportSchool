@@ -1,30 +1,37 @@
-﻿using eSportSchool.Data;
-using eSportSchool.Domain.Party;
-using eSportSchool.Facade.Party;
-using eSportSchool.Facade.Party.PartyViewFactory;
-using eSportSchool.Infra.Party;
+﻿using eSportSchool.Domain;
+using eSportSchool.Facade;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace eSportSchool.Pages.Trainers
+namespace eSportSchool.Pages
 {
-    public class TrainersPage:PageModel
+    public abstract class BasePage<TView, TEntity, TRepo> : PageModel
+        where TView : BaseView
+        where TEntity : Entity
+        where TRepo : IBaseRepo<TEntity>
     {
-        private readonly ITrainersRepo repo;
-        [BindProperty] public TrainerView Trainer { get; set; }
-        public IList<TrainerView> TrainersList { get; set; }
-        public TrainersPage(ApplicationDbContext c) => repo = new TrainersRepo(c, c.TrainerData);
+        private readonly TRepo repo;
+
+        protected abstract TView toView(TEntity? entity);
+        protected abstract TEntity toObject(TView? item);
+
+        [BindProperty] public TView? Item { get; set; }
+        public IList<TView>? Items { get; set; }
+
+        public string ItemId => Item?.Id ?? string.Empty;
+        public BasePage(TRepo r) => repo = r;
+
         public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync()
         {
             if (!ModelState.IsValid) return Page();
-            await repo.AddAsync(new TrainerViewFactory().Create(Trainer));
+            await repo.AddAsync(toObject(Item));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            Trainer = await GetPerson(id);
-            return Trainer == null ? NotFound() : Page();
+            Item = await GetItem(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
@@ -34,33 +41,35 @@ namespace eSportSchool.Pages.Trainers
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
-            Trainer = await GetPerson(id);
-            return Trainer == null? NotFound():Page();
+            Item = await GetItem(id);
+            return Item == null ? NotFound() : Page();
         }
-        private async Task<TrainerView> GetPerson(string id) => new TrainerViewFactory().Create(await repo.GetAsync(id));
+
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            Trainer = await GetPerson(id);
-            return Trainer == null ? NotFound() : Page();
+            Item = await GetItem(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
             if (!ModelState.IsValid) return Page();
-            var obj = new TrainerViewFactory().Create(Trainer);
+            var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);
             if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
+
         public async Task<IActionResult> OnGetIndexAsync()
         {
             var list = await repo.GetAsync();
-            TrainersList = new List<TrainerView>();
+            Items = new List<TView>();
             foreach (var obj in list)
             {
-                var v = new TrainerViewFactory().Create(obj);
-                TrainersList.Add(v);
+                var v = toView(obj);
+                Items.Add(v);
             }
             return Page();
         }
+        private async Task<TView> GetItem(string id) => toView(await repo.GetAsync(id));
     }
 }

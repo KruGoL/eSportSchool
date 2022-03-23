@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data.Party;
 using eSportSchool.Data.Preparation;
+using eSportSchool.Infra.Party;
 
 namespace eSportSchool.Data
 {
@@ -11,6 +12,17 @@ namespace eSportSchool.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder b)
+        {
+            base.OnModelCreating(b);
+            initializeTables(b);
+        }
+
+        private static void initializeTables(ModelBuilder b)
+        {
+            eSportSchoolDB.InitializeTables(b);
+        }
+
         public DbSet<TrainerData> TrainerData { get; set; }
         public DbSet<SportTeamData> SportTeamData { get; set; }
         public DbSet<TrainingData> TrainingData { get; set; }

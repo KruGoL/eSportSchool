@@ -4,10 +4,12 @@ using System.Diagnostics;
 
 namespace eSportSchool.Tests
 {
-    public abstract class BaseTests<TClass> : TestAsserts where TClass : class, new()
+
+    public abstract class BaseTests : IsTypeTested
     {
-        protected TClass obj;
-        protected BaseTests() => obj = new TClass();
+        protected object? obj;
+        protected BaseTests() => obj = createObj();
+        protected abstract object createObj();
         protected void IsProperty<T>(T? value = default, bool isReadOnly = false)
         {
             var memberName = getCallingNumber(nameof(IsProperty)).Replace("Test", string.Empty);

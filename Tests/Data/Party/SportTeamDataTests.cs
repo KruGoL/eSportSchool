@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace eSportSchool.Tests.Data.Party
 {
     [TestClass]
-    public class SportTeamDataTests: BaseTests<SportTeamData>
+    public class SportTeamDataTests: SealedClassTests<SportTeamData>
     {
         [TestMethod] public void IdTest() => IsProperty<string>();
         [TestMethod] public void OwnerIdTest() => IsProperty<string?>();
