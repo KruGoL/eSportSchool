@@ -2,7 +2,7 @@
 
 namespace eSportSchool.Data.Party
 {
-    public class AddressData: EntityData
+    public sealed class AddressData: EntityData
     {
         public string? Street { get; set; }
         public string? City { get; set; }
