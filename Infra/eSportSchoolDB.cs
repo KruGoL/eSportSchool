@@ -1,7 +1,7 @@
 ﻿using eSportSchool.Data.Party;
 using Microsoft.EntityFrameworkCore;
 
-namespace eSportSchool.Infra.Party
+namespace eSportSchool.Infra
 {
     public sealed class eSportSchoolDB: DbContext
     {
