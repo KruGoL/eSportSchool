@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data.Party;
 using eSportSchool.Data.Preparation;
-using eSportSchool.Infra.Party;
+using eSportSchool.Infra;
 
 namespace eSportSchool.Data
 {

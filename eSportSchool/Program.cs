@@ -1,5 +1,7 @@
 using eSportSchool.Data;
 using eSportSchool.Domain.Party;
+using eSportSchool.Infra;
+using eSportSchool.Infra.Initializers;
 using eSportSchool.Infra.Party;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +35,13 @@ else
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetService<eSportSchoolDB>();
+    db?.Database?.EnsureCreated();
+    eSportSchoolDBInitializer.Init(db);
 }
 
 app.UseHttpsRedirection();
