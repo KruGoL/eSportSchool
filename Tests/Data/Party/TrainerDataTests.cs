@@ -5,7 +5,7 @@ using eSportSchool.Data.Party;
 namespace eSportSchool.Tests.Data.Party
 {
     [TestClass]
-    public class TrainerDataTests: BaseTests<TrainerData>
+    public class TrainerDataTests: SealedClassTests<TrainerData>
     {
         [TestMethod] public void IdTest() => IsProperty<string>();
         [TestMethod] public void FirstNameTest() => IsProperty<string?>();

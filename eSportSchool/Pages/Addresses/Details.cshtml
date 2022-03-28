@@ -1,0 +1,11 @@
+﻿@page
+@model eSportSchool.Pages.AddressesPage
+
+@{
+    Layout = "_Details";
+    ViewData["Id"] = Model?.Item.Id ?? string.Empty;
+}
+
+<body>
+<partial name="_ShowAddress"/>
+</body>

@@ -8,16 +8,16 @@
 <table class="table">
     <thead>
     <tr>
-        <th> @Html.DisplayNameFor(model => model.TrainersList[0].FullName) </th>
-        <th> @Html.DisplayNameFor(model => model.TrainersList[0].FirstName) </th>
-        <th> @Html.DisplayNameFor(model => model.TrainersList[0].LastName) </th>
-        <th> @Html.DisplayNameFor(model => model.TrainersList[0].Gender) </th>
-        <th> @Html.DisplayNameFor(model => model.TrainersList[0].DoB) </th>
+        <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th>
+        <th> @Html.DisplayNameFor(model => model.Items[0].FirstName) </th>
+        <th> @Html.DisplayNameFor(model => model.Items[0].LastName) </th>
+        <th> @Html.DisplayNameFor(model => model.Items[0].Gender) </th>
+        <th> @Html.DisplayNameFor(model => model.Items[0].DoB) </th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.TrainersList) {
+    @foreach (var item in Model.Items) {
         <tr>
             <td> @Html.DisplayFor(modelItem => item.FullName) </td>
             <td> @Html.DisplayFor(modelItem => item.FirstName) </td>

@@ -1,5 +1,5 @@
 ﻿@page
-@model eSportSchool.Pages.SportTeams.SportTeamsPage
+@model eSportSchool.Pages.SportTeamsPage
 @using eSportSchool.Pages.Extensions
 
 @{
@@ -8,7 +8,7 @@
 }
 
 <body>
-    @Html.MyEditorFor(m => m.SportTeam.Id)
-    @Html.MyEditorFor(m => m.SportTeam.OwnerId)
+    @Html.MyEditorFor(m => m.Item.Id)
+    @Html.MyEditorFor(m => m.Item.OwnerId)
     <partial name="_EditSportTeam" />
 </body>

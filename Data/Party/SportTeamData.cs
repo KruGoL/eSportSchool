@@ -1,7 +1,7 @@
 ﻿
 namespace eSportSchool.Data.Party
 {
-    public class SportTeamData : EntityData
+    public sealed class SportTeamData : EntityData
     {
         public string? OwnerId { get; set; }
         public string? Title { get; set; }

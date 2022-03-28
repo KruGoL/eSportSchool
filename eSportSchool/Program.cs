@@ -1,4 +1,6 @@
 using eSportSchool.Data;
+using eSportSchool.Domain.Party;
+using eSportSchool.Infra.Party;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,11 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddDbContext<eSportSchoolDB>(options =>
+    options.UseSqlServer(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<ISportTeamsRepo, SportTeamsRepo>();
+builder.Services.AddTransient<ITrainersRepo, TrainersRepo>();
+builder.Services.AddTransient<IAddressRepo, AddressRepo>();
 
 var app = builder.Build();
 

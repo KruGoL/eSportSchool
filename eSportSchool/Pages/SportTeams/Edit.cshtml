@@ -1,11 +1,12 @@
 ﻿@page
-@model eSportSchool.Pages.SportTeams.SportTeamsPage
+@model eSportSchool.Pages.SportTeamsPage
+
 @{
     Layout = "_CreateEdit";
     ViewData["Title"] = "Edit";
 }
 
 <body>
-<input type="hidden" asp-for="SportTeam.Id"/>   
+<input type="hidden" asp-for="Item.Id"/>   
 <partial name="_EditSportTeam"/>
 </body>
