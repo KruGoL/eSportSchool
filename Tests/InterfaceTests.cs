@@ -2,9 +2,9 @@
 
 namespace eSportSchool.Tests
 {
-    public abstract class InterfaceTests<TClass> : BaseTests where TClass : class, new()
+    public abstract class InterfaceTests<T> : TestAsserts
     {
-        protected override object createObj() => new TClass();
-        [TestMethod] public void IsInterface() => isTrue(obj?.GetType()?.IsInterface ?? false);
+
+        [TestMethod] public void IsInterface() => isTrue(typeof(T)?.IsInterface ?? false);
     }
 }
