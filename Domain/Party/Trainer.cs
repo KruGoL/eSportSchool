@@ -3,7 +3,7 @@
 namespace eSportSchool.Domain.Party
 {
     public interface ITrainersRepo : IRepo<Trainer> { }
-    public class Trainer:Entity<TrainerData> 
+    public sealed class Trainer:Entity<TrainerData> 
     {
         public Trainer ():this (new TrainerData()){}
         public Trainer(TrainerData d) : base(d) { }
