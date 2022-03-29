@@ -6,17 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace eSportSchool.Tests.Domain
 {
     [TestClass]
-    public class IRepoTests : TestAsserts
-    {
-        [TestMethod] public void IsInterface() => isTrue(typeof(IRepo<Trainer>)?.IsInterface ?? false);
- 
-    }
+    public class IRepoTests : InterfaceTests<IRepo<Trainer>> { }
 
     [TestClass]
-    public class IBaseRepoTests : TestAsserts
-    {
-        [TestMethod] public void IsInterface() => isTrue(typeof(IBaseRepo<Trainer>)?.IsInterface ?? false);
-
-    }
+    public class IBaseRepoTests : InterfaceTests<IBaseRepo<Trainer>>   { }
 
 }

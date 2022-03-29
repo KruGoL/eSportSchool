@@ -1,5 +1,4 @@
-﻿
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace eSportSchool.Aids {
     public static class GetAssembly

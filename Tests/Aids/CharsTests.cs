@@ -1,5 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using eSportSchool.Aids;
+﻿using eSportSchool.Aids;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace eSportSchool.Tests.Aids {
     [TestClass]
