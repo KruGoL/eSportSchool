@@ -4,7 +4,7 @@ using eSportSchool.Data;
 namespace eSportSchool.Tests.Data.Party
 {
     [TestClass]
-    public class EntityDataTests : PublicClassTests<EntityData>
+    public class EntityDataTests : PublicClassTests<UniqueData>
     {
         [TestMethod] public void IdTest() => IsProperty<string>();
     }

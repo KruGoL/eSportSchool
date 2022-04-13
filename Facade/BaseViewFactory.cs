@@ -6,8 +6,8 @@ namespace eSportSchool.Facade
 {
     public abstract class BaseViewFactory<TView, TEntity, TData>
         where TView : class, new()
-        where TEntity : Entity<TData>
-        where TData : EntityData, new()
+        where TEntity : UniqueEntity<TData>
+        where TData : UniqueData, new()
     {
         protected abstract TEntity toEntity(TData d);
         protected virtual void copy(object? from, object? to)

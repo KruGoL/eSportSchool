@@ -2,7 +2,7 @@
 
 namespace eSportSchool.Infra.Initializers
 {
-    public class AddressesInitializer : BaseInitializer<AddressData>
+    public sealed class AddressesInitializer : BaseInitializer<AddressData>
     {
 
         public AddressesInitializer(eSportSchoolDB? db) : base(db, db?.Addresses) { }

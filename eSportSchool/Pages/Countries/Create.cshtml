@@ -1,0 +1,12 @@
+﻿@page
+@model eSportSchool.Pages.Party.CountriesPage
+@using eSportSchool.Pages.Extensions
+
+@{
+    Layout = "_Create";
+}
+
+<body>
+    @Html.MyEditorFor(m => m.Item.Id)
+    <partial name="_EditCountry" />
+</body>

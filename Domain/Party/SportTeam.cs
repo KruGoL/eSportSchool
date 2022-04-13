@@ -8,7 +8,7 @@ using eSportSchool.Data.Party;
 namespace eSportSchool.Domain.Party
 {
     public interface ISportTeamsRepo : IRepo<SportTeam> { }
-    public sealed class SportTeam : Entity<SportTeamData>
+    public sealed class SportTeam : UniqueEntity<SportTeamData>
     {
 
         public SportTeam():this(new SportTeamData()){}

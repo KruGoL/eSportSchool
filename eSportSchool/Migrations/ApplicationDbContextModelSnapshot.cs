@@ -47,6 +47,46 @@ namespace eSportSchool.Migrations
                     b.ToTable("Addresses", "eSportSchool");
                 });
 
+            modelBuilder.Entity("eSportSchool.Data.Party.CountryData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries", "eSportSchool");
+                });
+
+            modelBuilder.Entity("eSportSchool.Data.Party.CurrencyData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Currencies", "eSportSchool");
+                });
+
             modelBuilder.Entity("eSportSchool.Data.Party.SportTeamData", b =>
                 {
                     b.Property<string>("Id")
@@ -89,45 +129,6 @@ namespace eSportSchool.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Trainers", "eSportSchool");
-                });
-
-            modelBuilder.Entity("eSportSchool.Data.Preparation.ExerciseData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExerciseTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TrainingId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExerciseData");
-                });
-
-            modelBuilder.Entity("eSportSchool.Data.Preparation.TrainingData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SportTeamId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TrainingData");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

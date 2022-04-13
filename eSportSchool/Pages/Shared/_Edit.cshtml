@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
+    ViewData["Title"] = "Edit";
+    Layout = "_Layout";
+}
+
+<h1>@ViewData["SubTitle"]</h1>
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<form method="post" 
+    asp-page-handler = "Edit" 
+    asp-route-order="@Model.CurrentOrder"
+    asp-route-idx="@Model.PageIndex" 
+    asp-route-filter="@Model.CurrentFilter">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+    @RenderBody()
+            
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" /> 
+
+       <a asp-page="Index" 
+          asp-page-handler="Index" 
+          asp-route-order="@Model.CurrentOrder"
+          asp-route-idx="@Model.PageIndex" 
+          asp-route-filter="@Model.CurrentFilter"
+       >Back to List</a>
+
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

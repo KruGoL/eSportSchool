@@ -1,0 +1,11 @@
+﻿@page
+@model eSportSchool.Pages.Party.CountriesPage
+@using eSportSchool.Pages.Extensions
+
+@{
+    Layout = "_Create";
+}
+<body>
+    @Html.MyEditorFor(x => x.Item.Id)
+    <partial name= "_EditCurrency"/>
+</body>

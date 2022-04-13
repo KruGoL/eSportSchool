@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eSportSchool.Facade.Party
 {
-    public sealed class TrainerView: BaseView
+    public sealed class TrainerView: UniqueView
     {
         [DisplayName("First name")] public string? FirstName { get; set; }
         [DisplayName("Last name")] [Required] public string? LastName { get; set; }

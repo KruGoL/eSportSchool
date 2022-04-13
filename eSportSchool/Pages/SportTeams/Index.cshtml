@@ -1,34 +1,11 @@
 ﻿@page
-@model eSportSchool.Pages.SportTeamsPage
+@model eSportSchool.Pages.Party.SportTeamsPage
+@using eSportSchool.Pages.Extensions
 
-@{  ViewData["Title"] = "Index"; }
+@{
+    Layout = "_Index";
+}
 
-<h1>Index</h1>
-
-<p> <a asp-page="Create" asp-page-handler="Create">Create New</a> </p>
-<table class="table">
-    <thead>
-    <tr>
-        <th> @Html.DisplayNameFor(model => model.Items[0].Title) </th>
-        <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th>
-        <th> @Html.DisplayNameFor(model => model.Items[0].CreatedDate) </th>
-        <th> @Html.DisplayNameFor(model => model.Items[0].Description) </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.Items) {
-        <tr>
-            <td> @Html.DisplayFor(modelItem => item.Title) </td>
-            <td> @Html.DisplayFor(modelItem => item.FullName) </td>
-            <td> @Html.DisplayFor(modelItem => item.CreatedDate) </td>
-            <td> @Html.DisplayFor(modelItem => item.Description) </td>
-            <td>
-                <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-page-handler="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-page-handler="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<body>
+    @Html.ShowTable(Model.Items);
+</body>

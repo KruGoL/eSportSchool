@@ -5,7 +5,7 @@ using Microsoft.Build.Framework;
 
 namespace eSportSchool.Facade.Party
 {
-    public sealed class SportTeamView : BaseView
+    public sealed class SportTeamView : UniqueView
     {
         [Required] public string? OwnerId { get; set; }
         [DisplayName("Team name")] public string? Title { get; set; }

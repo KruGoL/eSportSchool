@@ -8,6 +8,6 @@ namespace eSportSchool.Tests.Facade
     {
         protected override object createObj() => new testClass();
 
-        private class testClass: BaseView { }
+        private class testClass: UniqueView { }
     }
 }

@@ -8,5 +8,16 @@ namespace eSportSchool.Infra.Party
     {
         public SportTeamsRepo(eSportSchoolDB? db) : base(db, db?.SportTeams) { }
         protected override SportTeam toDomain(SportTeamData d) => new (d);
+        internal override IQueryable<SportTeamData> addFilter(IQueryable<SportTeamData> q)
+        {
+            var y = CurrentFilter;
+            if (string.IsNullOrWhiteSpace(y)) return q;
+            return q.Where(
+                x => x.OwnerId.Contains(y)
+                || x.Description.Contains(y)
+                || x.Id.Contains(y)
+                || x.Title.Contains(y)
+                || x.CreatedDate.ToString().Contains(y));
+        }
     }
 }

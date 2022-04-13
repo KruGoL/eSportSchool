@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace eSportSchool.Facade.Party
 {
-    public sealed class AddressView : BaseView
+    public sealed class AddressView : UniqueView
     {
         [Required][DisplayName("Street")] public string Street { get; set; }
         [DisplayName("City")] public string? City { get; set; }

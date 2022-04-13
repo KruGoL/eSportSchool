@@ -1,19 +1,32 @@
-﻿@{
+﻿
+@{
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
     ViewData["Title"] = "Details";
     Layout = "_Layout";
-    var itemId = Model?.ItemId?? string.Empty;
+    var itemId = Model?.ItemId?? string.Empty;  
 }
+
 <h1>@ViewData["Title"]</h1>
 
 <div>
     <h4>@ViewData["SubTitle"]</h4>
     <hr />
-
     @RenderBody()
 
 </div>
 <div>
-    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@ViewData["Id"]">Edit</a> |
-    <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
+    <a asp-page="./Edit" 
+       asp-page-handler="Edit" 
+       asp-route-id="@itemId"
+       asp-route-order="@Model.CurrentOrder"
+       asp-route-idx="@Model.PageIndex" 
+       asp-route-filter="@Model.CurrentFilter"
+    >Edit</a> 
+
+    <a asp-page="Index" 
+       asp-page-handler="Index" 
+       asp-route-order="@Model.CurrentOrder"
+       asp-route-idx="@Model.PageIndex" 
+       asp-route-filter="@Model.CurrentFilter"
+    >Back to List</a>
 </div>

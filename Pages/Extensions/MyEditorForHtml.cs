@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
-namespace eSportSchool.Pages.Extensions
-{
+namespace eSportSchool.Pages.Extensions {
     public static class MyEditorForHtml
     {
         public static IHtmlContent MyEditorFor<TModel, TResult>(
@@ -28,7 +27,6 @@ namespace eSportSchool.Pages.Extensions
             l.Add(new HtmlString("</div>"));
             return l;
         }
-
 
     }
 }
