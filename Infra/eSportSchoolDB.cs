@@ -1,4 +1,5 @@
 ﻿using eSportSchool.Data.Party;
+using eSportSchool.Data.Sport;
 using Microsoft.EntityFrameworkCore;
 
 namespace eSportSchool.Infra
@@ -11,6 +12,7 @@ namespace eSportSchool.Infra
         public DbSet<AddressData>? Addresses { get; internal set; }
         public DbSet<CountryData>? Countries { get; internal set; }
         public DbSet<CurrencyData>? Currencies { get; internal set; }
+        public DbSet<KindOfSportData>? KindOfSports { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
@@ -24,6 +26,7 @@ namespace eSportSchool.Infra
             _ = (b?.Entity<AddressData>()?.ToTable(nameof(Addresses), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
+            _ = (b?.Entity<KindOfSportData>()?.ToTable(nameof(KindOfSports), s));
         }
     }
 }

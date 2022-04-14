@@ -1,8 +1,10 @@
 using eSportSchool.Data;
 using eSportSchool.Domain.Party;
+using eSportSchool.Domain.Sport;
 using eSportSchool.Infra;
 using eSportSchool.Infra.Initializers;
 using eSportSchool.Infra.Party;
+using eSportSchool.Infra.Sport;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +26,7 @@ builder.Services.AddTransient<ITrainersRepo, TrainersRepo>();
 builder.Services.AddTransient<IAddressRepo, AddressRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
+builder.Services.AddTransient<IKindOfSportRepo, KindOfSportRepo>();
 
 var app = builder.Build();
 
