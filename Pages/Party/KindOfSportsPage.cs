@@ -1,11 +1,11 @@
 ﻿using eSportSchool.Domain.Sport;
 using eSportSchool.Facade.Sport;
 
-namespace eSportSchool.Pages.Sport
+namespace eSportSchool.Pages.Party
 {
-    public class KindOfSportPage : PagedPage<KindOfSportView, KindOfSport, IKindOfSportRepo>
+    public class KindOfSportsPage : PagedPage<KindOfSportView, KindOfSport, IKindOfSportRepo>
     {
-        public KindOfSportPage(IKindOfSportRepo r) : base(r) { }
+        public KindOfSportsPage(IKindOfSportRepo r) : base(r) { }
 
         protected override KindOfSport toObject(KindOfSportView? item) => new KindOfSportViewFactory().Create(item);
 

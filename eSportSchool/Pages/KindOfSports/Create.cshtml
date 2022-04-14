@@ -1,0 +1,12 @@
+﻿@page
+@model eSportSchool.Pages.Party.KindOfSportsPage
+@using eSportSchool.Pages.Extensions
+
+@{
+    Layout = "_Create";
+}
+
+<body>
+    @Html.MyEditorFor(m => m.Item.Id)
+    <partial name="_EditKindOfSport" />
+</body>

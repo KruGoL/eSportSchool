@@ -14,7 +14,6 @@ namespace eSportSchool.Infra.Sport
             return q.Where(
                     x => x.Id.Contains(y)
                     || x.Name.Contains(y)
-                    || x.Code.Contains(y)
                     || x.Description.Contains(y));
         }
     }

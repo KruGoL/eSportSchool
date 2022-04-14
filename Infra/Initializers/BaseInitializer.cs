@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
+using eSportSchool.Infra.Initializers.Sport;
 
 namespace eSportSchool.Infra.Initializers
 {
@@ -31,6 +32,7 @@ namespace eSportSchool.Infra.Initializers
             new SportTeamsInitializer(db).Init();
             new CountriesInitializer(db).Init();
             new CurrenciesInitializer(db).Init();
+            new KindOfSportInitializer(db).Init();
         }
     }
 }
