@@ -9,7 +9,7 @@ namespace eSportSchool.Facade.Sport
         [DisplayName("English name")] public new string? Name { get; set; }
         [DisplayName("Description")] public new string? Description { get; set; }
     }
-    public sealed class KindOfSportFactory : BaseViewFactory<KindOfSportView, KindOfSport, KindOfSportData>
+    public sealed class KindOfSportViewFactory : BaseViewFactory<KindOfSportView, KindOfSport, KindOfSportData>
     {
         protected override KindOfSport toEntity(KindOfSportData d) => new(d);
     }

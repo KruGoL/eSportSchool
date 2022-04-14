@@ -5,12 +5,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eSportSchool.Migrations
 {
-    public partial class initialize : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "eSportSchool");
+
+            migrationBuilder.CreateTable(
+                name: "Addresses",
+                schema: "eSportSchool",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -52,17 +69,48 @@ namespace eSportSchool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExerciseData",
+                name: "Countries",
+                schema: "eSportSchool",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TrainingId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExerciseTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExerciseData", x => x.Id);
+                    table.PrimaryKey("PK_Countries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Currencies",
+                schema: "eSportSchool",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Currencies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "KindOfSports",
+                schema: "eSportSchool",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KindOfSports", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,20 +143,6 @@ namespace eSportSchool.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trainers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TrainingData",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    SportTeamId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TrainingData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -260,6 +294,10 @@ namespace eSportSchool.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Addresses",
+                schema: "eSportSchool");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -275,7 +313,16 @@ namespace eSportSchool.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ExerciseData");
+                name: "Countries",
+                schema: "eSportSchool");
+
+            migrationBuilder.DropTable(
+                name: "Currencies",
+                schema: "eSportSchool");
+
+            migrationBuilder.DropTable(
+                name: "KindOfSports",
+                schema: "eSportSchool");
 
             migrationBuilder.DropTable(
                 name: "SportTeams",
@@ -284,9 +331,6 @@ namespace eSportSchool.Migrations
             migrationBuilder.DropTable(
                 name: "Trainers",
                 schema: "eSportSchool");
-
-            migrationBuilder.DropTable(
-                name: "TrainingData");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
