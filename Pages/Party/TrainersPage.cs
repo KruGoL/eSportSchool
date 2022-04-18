@@ -1,5 +1,8 @@
-﻿using eSportSchool.Domain.Party;
+﻿using eSportSchool.Aids;
+using eSportSchool.Data.Party;
+using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eSportSchool.Pages.Party
 {
@@ -18,5 +21,16 @@ namespace eSportSchool.Pages.Party
             nameof(TrainerView.Gender),
             nameof(TrainerView.DoB)
         };
+        public IEnumerable<SelectListItem> Genders
+        => Enum.GetValues<IsoGender>()?
+           .Select(x => new SelectListItem(x.Description(), x.ToString()))
+           ?? new List<SelectListItem>();
+        public string GenderDescription(IsoGender? x)
+            => (x ?? IsoGender.NotApplicable).Description();
+        public override object? GetValue(string name, TrainerView v)
+        {
+            var r = base.GetValue(name, v);
+            return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender)r) : r;
+        }
     }
 }

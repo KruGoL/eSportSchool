@@ -1,4 +1,5 @@
 ﻿using eSportSchool.Data;
+using eSportSchool.Data.Party;
 
 namespace eSportSchool.Domain
 {
@@ -10,6 +11,7 @@ namespace eSportSchool.Domain
         protected static string getValue(string? v) => v ?? DefaultStr;
         protected static bool getValue(bool? v) => v ?? defaultBool;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
+        protected static IsoGender getValue(IsoGender? v) => v ?? IsoGender.NotApplicable;
 
     }
     public abstract class UniqueEntity<TData> : UniqueEntity where TData : UniqueData, new()
