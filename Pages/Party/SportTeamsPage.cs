@@ -8,7 +8,8 @@ namespace eSportSchool.Pages.Party
     public class SportTeamsPage : PagedPage<SportTeamView, SportTeam, ISportTeamsRepo>
     {
         private readonly IKindOfSportRepo sports;
-        public SportTeamsPage(ISportTeamsRepo r , IKindOfSportRepo s) : base(r) => sports = s;
+        private readonly ITrainersRepo trainers;
+        public SportTeamsPage(ISportTeamsRepo r, IKindOfSportRepo s, ITrainersRepo t) : base(r) {sports = s ; trainers = t; }
 
         protected override SportTeam toObject(SportTeamView? item) => new SportTeamViewFactory().Create(item);
         protected override SportTeamView toView(SportTeam? entity) => new SportTeamViewFactory().Create(entity);
@@ -25,14 +26,29 @@ namespace eSportSchool.Pages.Party
            => sports?.GetAll(x => x.Name)?
            .Select(x => new SelectListItem(x.Name, x.Id))
            ?? new List<SelectListItem>();
+        public IEnumerable<SelectListItem> Trainers
+           => trainers?.GetAll(x => x.LastName)?
+           .Select(x => new SelectListItem(x.LastName, x.Id))
+           ?? new List<SelectListItem>();
 
         public string SportName(string? sportId = null)
             => Sports?.FirstOrDefault(x => x.Value == (sportId ?? string.Empty))?.Text ?? "Unspecified";
+        public string TrainerName(string? trainerId = null)
+            => Trainers?.FirstOrDefault(x => x.Value == (trainerId ?? string.Empty))?.Text ?? "Unspecified";
 
         public override object? GetValue(string name, SportTeamView v)
-        {
+        {         
             var r = base.GetValue(name, v);
-            return name == nameof(SportTeamView.SportId) ? SportName(r as string) : r;
+            if (name == nameof(SportTeamView.SportId))
+            {
+                return SportName(r as string);
+            }
+            else if (name == nameof(SportTeamView.OwnerId))
+            {
+                return TrainerName(r as string);
+            }
+            else return r;
         }
+       
     }
 }

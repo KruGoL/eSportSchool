@@ -18,5 +18,6 @@ namespace eSportSchool.Domain.Party
         public override string ToString() => $"{Title} : {Sport} ({CreatedDate})";
 
         public KindOfSport? Sport { get; set; }
+        public Trainer? Trainer { get; set; }
     }
 }
