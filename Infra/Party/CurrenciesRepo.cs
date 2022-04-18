@@ -3,7 +3,7 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public abstract class CurrenciesRepo : Repo<Currency, CurrencyData>, ICurrenciesRepo
+    public class CurrenciesRepo : Repo<Currency, CurrencyData>, ICurrenciesRepo
     {
         public CurrenciesRepo(eSportSchoolDB? db) : base(db, db?.Currencies) { }
         protected override Currency toDomain(CurrencyData d) => new(d);

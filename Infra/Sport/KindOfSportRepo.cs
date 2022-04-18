@@ -3,7 +3,7 @@ using eSportSchool.Domain.Sport;
 
 namespace eSportSchool.Infra.Sport
 {
-    public abstract class KindOfSportRepo : Repo<KindOfSport, KindOfSportData>, IKindOfSportRepo
+    public class KindOfSportRepo : Repo<KindOfSport, KindOfSportData>, IKindOfSportRepo
     {
         public KindOfSportRepo(eSportSchoolDB db) : base(db, db.KindOfSports) { }
         protected override KindOfSport toDomain(KindOfSportData d) => new(d);
