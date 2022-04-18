@@ -4,7 +4,7 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public class SportTeamsRepo : Repo<SportTeam, SportTeamData>, ISportTeamsRepo
+    public abstract class SportTeamsRepo : Repo<SportTeam, SportTeamData>, ISportTeamsRepo
     {
         public SportTeamsRepo(eSportSchoolDB? db) : base(db, db?.SportTeams) { }
         protected override SportTeam toDomain(SportTeamData d) => new (d);
@@ -15,6 +15,7 @@ namespace eSportSchool.Infra.Party
             return q.Where(
                 x => x.OwnerId.Contains(y)
                 || x.Description.Contains(y)
+                || x.SportId.Contains(y)
                 || x.Id.Contains(y)
                 || x.Title.Contains(y)
                 || x.CreatedDate.ToString().Contains(y));
