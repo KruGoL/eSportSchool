@@ -3,7 +3,7 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public class CountriesRepo : Repo<Country, CountryData>, ICountriesRepo
+    public abstract class CountriesRepo : Repo<Country, CountryData>, ICountriesRepo
     {
         public CountriesRepo(eSportSchoolDB? db) : base(db, db?.Countries) { }
         protected override Country toDomain(CountryData d) => new(d);

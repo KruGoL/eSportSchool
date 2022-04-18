@@ -6,14 +6,14 @@ namespace eSportSchool.Infra.Initializers
     public class SportTeamsInitializer : BaseInitializer<SportTeamData>
     {
         public SportTeamsInitializer(eSportSchoolDB? db) : base(db, db?.SportTeams) { }
-        internal static SportTeamData createSportTeam(string ownerId, string title, string sport, string description, DateTime createdDate)
+        internal static SportTeamData createSportTeam(string ownerId, string title, string sportId, string description, DateTime createdDate)
         {
             var sportTeam = new SportTeamData
             {
                 Id = UniqueData.NewId,
                 OwnerId = ownerId,
                 Title = title,
-                Sport = sport,
+                SportId = sportId,
                 Description = description,
                 CreatedDate = createdDate
             };

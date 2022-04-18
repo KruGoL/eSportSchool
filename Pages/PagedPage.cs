@@ -36,11 +36,11 @@ namespace eSportSchool.Pages
                 sortOrder = CurrentOrder
             });
         public virtual string[] IndexColumns => Array.Empty<string>();
-        public object? GetValue(string name, TView v)
-            => Safe.Run(() => {
-                var pi = v?.GetType()?.GetProperty(name);
-                return pi == null ? null : pi.GetValue(v);
-            }, null);
+        public virtual object? GetValue(string name, TView v)
+                   => Safe.Run(() => {
+                       var pi = v?.GetType()?.GetProperty(name);
+                       return pi?.GetValue(v);
+                   }, null);
         public string? DisplayName(string name) => Safe.Run(() => {
             var p = typeof(TView).GetProperty(name);
             var a = p?.CustomAttributes?

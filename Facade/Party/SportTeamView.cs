@@ -9,7 +9,7 @@ namespace eSportSchool.Facade.Party
     {
         [Required] public string? OwnerId { get; set; }
         [DisplayName("Team name")] public string? Title { get; set; }
-        [DisplayName("Kind of sport")] public string? Sport { get; set; }
+        [DisplayName("Kind of sport")] public string? SportId { get; set; }
         [DisplayName("Team created")] public DateTime? CreatedDate { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Full name")] public string? FullName { get; set; }

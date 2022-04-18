@@ -4,7 +4,7 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public class TrainersRepo : Repo<Trainer, TrainerData>, ITrainersRepo
+    public abstract class TrainersRepo : Repo<Trainer, TrainerData>, ITrainersRepo
     {
         public TrainersRepo(eSportSchoolDB db) : base(db, db.Trainers) { }
         protected override Trainer toDomain(TrainerData d) => new (d);

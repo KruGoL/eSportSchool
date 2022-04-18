@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eSportSchool.Data.Party;
+﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Sport;
 
 namespace eSportSchool.Domain.Party
 {
@@ -17,10 +13,11 @@ namespace eSportSchool.Domain.Party
         public string Id => getValue(Data?.Id);
         public string OwnerId => getValue(Data?.OwnerId);
         public string Title => getValue(Data?.Title);
-        public string Sport => getValue(Data?.Sport);
+        public string SportId => getValue(Data?.SportId);
         public string Description => getValue(Data?.Description);
         public DateTime CreatedDate => getValue(Data?.CreatedDate);
         public override string ToString() => $"{Title} : {Sport} ({CreatedDate})";
 
+        public KindOfSport? Sport { get; set; }
     }
 }

@@ -1,11 +1,6 @@
 ﻿using eSportSchool.Data;
 using eSportSchool.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eSportSchool.Infra
 {
@@ -24,6 +19,7 @@ namespace eSportSchool.Infra
         public abstract bool Delete(string id);
         public abstract Task<bool> DeleteAsync(string id);
         public abstract List<TDomain> Get();
+        public abstract List<TDomain> GetAll<TKey>(Func<TDomain, TKey>? orderBy = null);
         public abstract TDomain Get(string id);
         public abstract Task<List<TDomain>> GetAsync();
         public abstract Task<TDomain> GetAsync(string id);
