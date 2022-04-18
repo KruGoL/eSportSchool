@@ -2,10 +2,9 @@
 @using eSportSchool.Pages.Extensions
 
 <body>
-    @Html.MyEditorFor(m => m.Item.Title)
     @Html.MyEditorFor(m => m.Item.OwnerId)
-    @Html.MyEditorFor(m => m.Item.SportId)
+    @Html.MyEditorFor(m => m.Item.Title)
+    @Html.MyDropDownFor(x => x.Item.SportId, Model.Sports)
     @Html.MyEditorFor(m => m.Item.CreatedDate)
     @Html.MyEditorFor(m => m.Item.Description)
-    @Html.MyDropDownFor(x => x.Item.SportId, Model.Sports)
 </body>
