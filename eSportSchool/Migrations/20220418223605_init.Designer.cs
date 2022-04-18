@@ -12,7 +12,7 @@ using eSportSchool.Data;
 namespace eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220418204905_init")]
+    [Migration("20220418223605_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

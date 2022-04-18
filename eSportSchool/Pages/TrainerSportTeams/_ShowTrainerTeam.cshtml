@@ -1,0 +1,5 @@
+﻿@model eSportSchool.Pages.Party.TrainerSportTeamsPage
+@using eSportSchool.Pages.Extensions
+
+@Html.MyViewerFor(m=>m.Item.TrainerId, Model.TrainerName(Model.Item.TrainerId))
+@Html.MyViewerFor(m=>m.Item.STeamId, Model.SportTeamName(Model.Item.STeamId))

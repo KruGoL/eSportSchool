@@ -1,0 +1,8 @@
+﻿@model eSportSchool.Pages.Party.TrainerSportTeamsPage
+@using eSportSchool.Pages.Extensions
+
+<body>
+    @Html.MyDropDownFor(m => m.Item.TrainerId, Model.Trainers)
+    @Html.MyDropDownFor(m => m.Item.STeamId, Model.SportTeams)
+
+</body>
