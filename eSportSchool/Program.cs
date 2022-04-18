@@ -1,7 +1,9 @@
 using eSportSchool.Data;
+using eSportSchool.Domain.Combined;
 using eSportSchool.Domain.Party;
 using eSportSchool.Domain.Sport;
 using eSportSchool.Infra;
+using eSportSchool.Infra.Combined;
 using eSportSchool.Infra.Initializers;
 using eSportSchool.Infra.Party;
 using eSportSchool.Infra.Sport;
@@ -27,6 +29,7 @@ builder.Services.AddTransient<IAddressRepo, AddressRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 builder.Services.AddTransient<IKindOfSportRepo, KindOfSportRepo>();
+builder.Services.AddTransient<ITrainerSportTeamRepo, TrainerSportTeamRepo>();
 
 var app = builder.Build();
 

@@ -10,7 +10,6 @@ namespace eSportSchool.Domain.Party
         public SportTeam():this(new SportTeamData()){}
         public SportTeam(SportTeamData d) : base(d){}
 
-        public string Id => getValue(Data?.Id);
         public string OwnerId => getValue(Data?.OwnerId);
         public string Title => getValue(Data?.Title);
         public string SportId => getValue(Data?.SportId);
@@ -19,5 +18,6 @@ namespace eSportSchool.Domain.Party
         public override string ToString() => $"{Title} : {Sport} ({CreatedDate})";
 
         public KindOfSport? Sport { get; set; }
+        public Trainer? Trainer { get; set; }
     }
 }

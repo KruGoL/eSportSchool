@@ -10,7 +10,7 @@ namespace eSportSchool.Domain.Party
 
         public string FirstName => getValue(Data?.FirstName);
         public string LastName => getValue(Data?.LastName);
-        public bool Gender => getValue(Data?.Gender);
+        public IsoGender Gender => getValue(Data?.Gender);
         public DateTime DoB => getValue(Data?.DoB);
         public override string ToString() => $"{FirstName}{LastName}({Gender},{DoB})";
 

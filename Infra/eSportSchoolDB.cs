@@ -1,5 +1,6 @@
 ﻿using eSportSchool.Data.Party;
 using eSportSchool.Data.Sport;
+using eSportSchool.Data.Сombined;
 using Microsoft.EntityFrameworkCore;
 
 namespace eSportSchool.Infra
@@ -8,6 +9,7 @@ namespace eSportSchool.Infra
     {
         public eSportSchoolDB(DbContextOptions<eSportSchoolDB> options) : base(options) { }
         public DbSet<TrainerData>? Trainers { get; internal set; }
+        public DbSet<TrainerSportTeamData>? TrainerSportTeams { get; internal set; }
         public DbSet<SportTeamData>? SportTeams { get; internal set; }
         public DbSet<AddressData>? Addresses { get; internal set; }
         public DbSet<CountryData>? Countries { get; internal set; }
