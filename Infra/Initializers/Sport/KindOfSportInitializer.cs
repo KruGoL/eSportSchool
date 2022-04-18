@@ -1,4 +1,5 @@
-﻿using eSportSchool.Data.Sport;
+﻿using eSportSchool.Data;
+using eSportSchool.Data.Sport;
 using eSportSchool.Domain;
 
 namespace eSportSchool.Infra.Initializers.Sport
@@ -55,7 +56,7 @@ namespace eSportSchool.Infra.Initializers.Sport
         internal static KindOfSportData createKindOfSport(string id, string name, string description)
             => new()
             {
-                Id = id  ?? KindOfSportData.NewId,
+                Id = UniqueData.NewId,
                 Name = name,
                 Description = description
             };

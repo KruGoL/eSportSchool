@@ -12,8 +12,8 @@ using eSportSchool.Data;
 namespace eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220414175737_tri")]
-    partial class tri
+    [Migration("20220418165146_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,9 @@ namespace eSportSchool.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OwnerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sport")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

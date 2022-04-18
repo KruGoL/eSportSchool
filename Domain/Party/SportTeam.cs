@@ -17,9 +17,10 @@ namespace eSportSchool.Domain.Party
         public string Id => getValue(Data?.Id);
         public string OwnerId => getValue(Data?.OwnerId);
         public string Title => getValue(Data?.Title);
+        public string Sport => getValue(Data?.Sport);
         public string Description => getValue(Data?.Description);
         public DateTime CreatedDate => getValue(Data?.CreatedDate);
-        public override string ToString() => $"{Title} ({CreatedDate})";
+        public override string ToString() => $"{Title} : {Sport} ({CreatedDate})";
 
     }
 }

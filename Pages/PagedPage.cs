@@ -2,6 +2,7 @@
 using eSportSchool.Domain;
 using eSportSchool.Facade;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace eSportSchool.Pages
 {
@@ -40,5 +41,11 @@ namespace eSportSchool.Pages
                 var pi = v?.GetType()?.GetProperty(name);
                 return pi == null ? null : pi.GetValue(v);
             }, null);
+        public string? DisplayName(string name) => Safe.Run(() => {
+            var p = typeof(TView).GetProperty(name);
+            var a = p?.CustomAttributes?
+                .FirstOrDefault(x => x.AttributeType == typeof(DisplayNameAttribute));
+            return a?.ConstructorArguments[0].Value?.ToString() ?? name;
+        }, name);
     }
 }

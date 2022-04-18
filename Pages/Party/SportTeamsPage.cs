@@ -14,6 +14,7 @@ namespace eSportSchool.Pages.Party
             nameof(SportTeamView.Id),
             nameof(SportTeamView.OwnerId),
             nameof(SportTeamView.Title),
+            nameof(SportTeamView.Sport),
             nameof(SportTeamView.CreatedDate),
             nameof(SportTeamView.Description),
             nameof(SportTeamView.FullName)

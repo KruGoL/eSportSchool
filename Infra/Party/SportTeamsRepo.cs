@@ -15,6 +15,7 @@ namespace eSportSchool.Infra.Party
             return q.Where(
                 x => x.OwnerId.Contains(y)
                 || x.Description.Contains(y)
+                || x.Sport.Contains(y)
                 || x.Id.Contains(y)
                 || x.Title.Contains(y)
                 || x.CreatedDate.ToString().Contains(y));

@@ -13,7 +13,6 @@ namespace eSportSchool.Domain.Party
     {
         public Country() : this(new CountryData()) { }
         public Country(CountryData d) : base(d) { }
-    
-
+         
     }
 }
