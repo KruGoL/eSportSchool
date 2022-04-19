@@ -21,8 +21,8 @@ namespace eSportSchool.Pages.Party
             nameof(TrainerSportTeamView.STeamId),
         };
         public IEnumerable<SelectListItem> Trainers
-            => trainers?.GetAll(x => x.LastName)?
-            .Select(x => new SelectListItem(x.LastName, x.Id))
+            => trainers?.GetAll(x => x.FullName)?
+            .Select(x => new SelectListItem(x.FullName, x.Id))
             ?? new List<SelectListItem>();
         public IEnumerable<SelectListItem> SportTeams
             => teams?.GetAll(x => x.Title)?

@@ -4,6 +4,7 @@
     {
         public string? FirstName { get; set; }
         public  string? LastName { get; set; }
+        public string? FullName { get; set; }
         public IsoGender? Gender { get; set; }
         public DateTime? DoB { get; set; }
     }

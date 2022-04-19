@@ -16,6 +16,7 @@ namespace eSportSchool.Infra.Party
                 x => x.FirstName.Contains(y)
                 || x.LastName.Contains(y)
                 || x.Id.Contains(y)
+                || x.FullName.Contains(y)
                 || x.DoB.ToString().Contains(y)
                 || x.Gender.ToString().Contains(y));
         }

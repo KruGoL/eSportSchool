@@ -19,7 +19,8 @@ namespace eSportSchool.Pages.Party
             nameof(TrainerView.FirstName),
             nameof(TrainerView.LastName),
             nameof(TrainerView.Gender),
-            nameof(TrainerView.DoB)
+            nameof(TrainerView.DoB),
+            nameof(TrainerView.Description)
         };
         public IEnumerable<SelectListItem> Genders
         => Enum.GetValues<IsoGender>()?
@@ -32,5 +33,6 @@ namespace eSportSchool.Pages.Party
             var r = base.GetValue(name, v);
             return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender)r) : r;
         }
+        public List<SportTeam?> SportTeams => toObject(Item).SportTeams;
     }
 }

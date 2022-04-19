@@ -9,9 +9,10 @@ namespace eSportSchool.Infra.Initializers
         {
             var trainer = new TrainerData
             {
-                Id = firstName + lastName,
+                Id = firstName + lastName + "Id",
                 FirstName = firstName,
                 LastName = lastName,
+                FullName = firstName + " " + lastName,
                 Gender = gender,
                 DoB = dayOfBirth
             };

@@ -8,6 +8,7 @@ namespace eSportSchool.Facade.Party
     public sealed class SportTeamView : UniqueView
     {
         [Required] public string? OwnerId { get; set; }
+        [DisplayName("Trainer name")] public string? OwnerName { get; set; }
         [DisplayName("Team name")] public string? Title { get; set; }
         [DisplayName("Kind of sport")] public string? SportId { get; set; }
         [DisplayName("Team created")] public DateTime? CreatedDate { get; set; }

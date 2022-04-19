@@ -1,4 +1,5 @@
 ﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Combined;
 
 namespace eSportSchool.Domain.Party
 {
@@ -12,8 +13,18 @@ namespace eSportSchool.Domain.Party
         public string LastName => getValue(Data?.LastName);
         public IsoGender Gender => getValue(Data?.Gender);
         public DateTime DoB => getValue(Data?.DoB);
+        public string FullName => FirstName + " " + LastName;
         public override string ToString() => $"{FirstName}{LastName}({Gender},{DoB})";
 
+        public List<TrainerSportTeam> TrainerSportTeams
+           => GetRepo.Instance<ITrainerSportTeamRepo>()?
+           .GetAll(x => x.TrainerId)?
+           .Where(x => x.TrainerId == Id)?
+           .ToList() ?? new List<TrainerSportTeam>();
 
+        public List<SportTeam?> SportTeams
+            => TrainerSportTeams
+            .Select(x => x.SportTeam)
+            .ToList() ?? new List<SportTeam?>();
     }
 }
