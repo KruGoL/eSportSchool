@@ -19,7 +19,8 @@ namespace eSportSchool.Pages.Party
             nameof(TrainerView.FirstName),
             nameof(TrainerView.LastName),
             nameof(TrainerView.Gender),
-            nameof(TrainerView.DoB)
+            nameof(TrainerView.DoB),
+            nameof(TrainerView.Description)
         };
         public IEnumerable<SelectListItem> Genders
         => Enum.GetValues<IsoGender>()?

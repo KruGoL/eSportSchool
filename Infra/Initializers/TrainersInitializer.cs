@@ -12,6 +12,7 @@ namespace eSportSchool.Infra.Initializers
                 Id = firstName + lastName,
                 FirstName = firstName,
                 LastName = lastName,
+                FullName = firstName + " " + lastName,
                 Gender = gender,
                 DoB = dayOfBirth
             };

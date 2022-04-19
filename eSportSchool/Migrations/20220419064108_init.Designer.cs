@@ -12,7 +12,7 @@ using eSportSchool.Data;
 namespace eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220418223605_init")]
+    [Migration("20220419064108_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,6 +123,9 @@ namespace eSportSchool.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Gender")

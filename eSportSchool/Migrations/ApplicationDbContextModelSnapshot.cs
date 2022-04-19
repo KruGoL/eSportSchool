@@ -123,6 +123,9 @@ namespace eSportSchool.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("Gender")
                         .HasColumnType("int");
 
