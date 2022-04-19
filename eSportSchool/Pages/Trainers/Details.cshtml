@@ -1,11 +1,43 @@
 ﻿@page
+@using eSportSchool.Facade.Party
 @model eSportSchool.Pages.Party.TrainersPage
 
 @{
     Layout = "_Details";
     ViewData["Id"] = Model?.Item.Id ?? string.Empty;
+    var columns = new[] { 
+        nameof(SportTeamView.Title)
+        , nameof(SportTeamView.FullName)
+    };
+    object? getValue<T>(string propertyname, T item) {
+        var pi = typeof(T).GetProperty(propertyname);
+        return pi?.GetValue(item);
+    }
 }
 
 <body>
 <partial name="_ShowTrainer"/>
+
+<br>
+    <h4>Sport Teams</h4>
+<br>
+
+    <table class="table">
+    <thead>
+    <tr>
+        @foreach (var name in columns) { <td> @Html.Raw(name) </td> }
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SportTeams) {
+            <tr>
+                @foreach (var name in columns) {
+                    <td>
+                    @Html.Raw(getValue(name, item))
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+    </table>
 </body>

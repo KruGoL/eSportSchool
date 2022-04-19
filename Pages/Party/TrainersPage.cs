@@ -32,5 +32,6 @@ namespace eSportSchool.Pages.Party
             var r = base.GetValue(name, v);
             return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender)r) : r;
         }
+        public List<SportTeam?> SportTeams => toObject(Item).SportTeams;
     }
 }
