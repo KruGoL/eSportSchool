@@ -49,6 +49,6 @@ namespace eSportSchool.Pages.Party
             }
             else return r;
         }
-       
+        public List<Trainer?> TrainerList => toObject(Item).Trainers;
     }
 }

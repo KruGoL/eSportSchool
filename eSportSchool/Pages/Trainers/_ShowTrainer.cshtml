@@ -1,8 +1,9 @@
 ﻿@model eSportSchool.Pages.Party.TrainersPage
 @using eSportSchool.Pages.Extensions
 
-@Html.MyViewerFor(m=>m.Item.FullName)
+@Html.MyViewerFor(m=>m.Item.FirstName)
 @Html.MyViewerFor(m=>m.Item.LastName)
+@Html.MyViewerFor(m=>m.Item.FullName)
 @Html.MyViewerFor(m=>m.Item.Gender)
 @Html.MyViewerFor(m=>m.Item.DoB)
 @Html.MyViewerFor(m=>m.Item.Description)

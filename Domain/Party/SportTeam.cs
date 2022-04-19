@@ -1,4 +1,5 @@
 ﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Combined;
 using eSportSchool.Domain.Sport;
 
 namespace eSportSchool.Domain.Party
@@ -19,5 +20,16 @@ namespace eSportSchool.Domain.Party
 
         public KindOfSport? Sport { get; set; }
         public Trainer? Trainer { get; set; }
+
+        public List<TrainerSportTeam> TrainerSportTeams
+            => GetRepo.Instance<ITrainerSportTeamRepo>()?
+            .GetAll(x => x.STeamId)?
+            .Where(x => x.STeamId == Id)?
+            .ToList() ?? new List<TrainerSportTeam>();
+
+        public List<Trainer?> Trainers
+            => TrainerSportTeams
+            .Select(x => x.Trainer)
+            .ToList() ?? new List<Trainer?>();
     }
 }

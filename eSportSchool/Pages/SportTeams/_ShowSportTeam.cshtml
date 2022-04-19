@@ -3,6 +3,7 @@
 
 @Html.MyViewerFor(m=>m.Item.Title)
 @Html.MyViewerFor(m=>m.Item.OwnerId)
+@Html.MyViewerFor(x => x.Item.OwnerName, Model.TrainerName(Model.Item.OwnerId))
 @Html.MyViewerFor(m=>m.Item.SportId)
 @Html.MyViewerFor(m=>m.Item.FullName)
 @Html.MyViewerFor(m=>m.Item.CreatedDate)
