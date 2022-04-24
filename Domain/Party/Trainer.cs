@@ -6,7 +6,7 @@ namespace eSportSchool.Domain.Party
     public interface ITrainersRepo : IRepo<Trainer> { }
     public sealed class Trainer:UniqueEntity<TrainerData> 
     {
-        public Trainer ():this (new TrainerData()){}
+        public Trainer ():this (new ()){}
         public Trainer(TrainerData d) : base(d) { }
 
         public string FirstName => getValue(Data?.FirstName);
@@ -16,15 +16,10 @@ namespace eSportSchool.Domain.Party
         public string FullName => FirstName + " " + LastName;
         public override string ToString() => $"{FirstName}{LastName}({Gender},{DoB})";
 
-        public List<TrainerSportTeam> TrainerSportTeams
-           => GetRepo.Instance<ITrainerSportTeamRepo>()?
-           .GetAll(x => x.TrainerId)?
-           .Where(x => x.TrainerId == Id)?
-           .ToList() ?? new List<TrainerSportTeam>();
-
-        public List<SportTeam?> SportTeams
-            => TrainerSportTeams
-            .Select(x => x.SportTeam)
-            .ToList() ?? new List<SportTeam?>();
+        public List<SportTeam?> SportTeams => GetRepo.Instance<ISportTeamsRepo>()?
+                       .GetAll(x => x.OwnerId)?
+                       .Where(x => x.OwnerId == Id)?
+                       .ToList() ?? new List<SportTeam?>();
+        public string SportTeamsCount => SportTeams?.Count.ToString() ?? "Does not coach anyone";
     }
 }

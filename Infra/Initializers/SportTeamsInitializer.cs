@@ -24,5 +24,6 @@ namespace eSportSchool.Infra.Initializers
             createSportTeam("TrainerId_2","MiddleTeam","Run","Lose +-",new DateTime(2010, 09, 19)),
             createSportTeam("TrainerId_3","LowTeam","Hockey","Always Lose",new DateTime(2020, 09, 19)),
         };
+
     }
 }

@@ -3,9 +3,9 @@ using eSportSchool.Domain.Combined;
 
 namespace eSportSchool.Infra.Combined
 {
-    public class TrainerSportTeamRepo : Repo<TrainerSportTeam, TrainerSportTeamData>, ITrainerSportTeamRepo
+    public class TrainerSportTeamsRepo : Repo<TrainerSportTeam, TrainerSportTeamData>, ITrainerSportTeamsRepo
     {
-        public TrainerSportTeamRepo(eSportSchoolDB? db) : base(db, db?.TrainerSportTeams) { }
+        public TrainerSportTeamsRepo(eSportSchoolDB? db) : base(db, db?.TrainerSportTeams) { }
         protected override TrainerSportTeam toDomain(TrainerSportTeamData d) => new(d);
         internal override IQueryable<TrainerSportTeamData> addFilter(IQueryable<TrainerSportTeamData> q)
         {

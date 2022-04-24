@@ -1,4 +1,5 @@
 using eSportSchool.Data;
+using eSportSchool.Domain;
 using eSportSchool.Domain.Combined;
 using eSportSchool.Domain.Party;
 using eSportSchool.Domain.Sport;
@@ -29,7 +30,7 @@ builder.Services.AddTransient<IAddressRepo, AddressRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 builder.Services.AddTransient<IKindOfSportRepo, KindOfSportRepo>();
-builder.Services.AddTransient<ITrainerSportTeamRepo, TrainerSportTeamRepo>();
+builder.Services.AddTransient<ITrainerSportTeamsRepo, TrainerSportTeamsRepo>();
 
 var app = builder.Build();
 
@@ -47,6 +48,7 @@ else
 
 using (var scope = app.Services.CreateScope())
 {
+    GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<eSportSchoolDB>();
     db?.Database?.EnsureCreated();
     eSportSchoolDBInitializer.Init(db);

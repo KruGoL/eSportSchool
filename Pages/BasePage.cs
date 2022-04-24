@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace eSportSchool.Pages {
     public abstract class BasePage<TView, TEntity, TRepo> : PageModel
-        where TView : UniqueView
+        where TView : UniqueView , new() 
         where TEntity : UniqueEntity
         where TRepo : IBaseRepo<TEntity> {
 
@@ -14,8 +14,8 @@ namespace eSportSchool.Pages {
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
         protected abstract IActionResult redirectToIndex();
-        [BindProperty] public TView? Item { get; set; }
-        public IList<TView>? Items { get; set; }
+        [BindProperty] public TView Item { get; set; } = new TView();
+        public IList<TView> Items { get; set; } = new List<TView>();
         public string ItemId => Item?.Id ?? string.Empty;
         public BasePage(TRepo r) => repo = r;
         protected abstract IActionResult getCreate();

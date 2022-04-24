@@ -8,7 +8,7 @@ namespace eSportSchool.Pages
 {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>,
         IPageModel, IIndexModel<TView>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IPagedRepo<TEntity>
     {

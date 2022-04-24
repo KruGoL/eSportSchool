@@ -7,7 +7,7 @@
     ViewData["Id"] = Model?.Item.Id ?? string.Empty;
     var columns = new[] { 
         nameof(SportTeamView.Title)
-        , nameof(SportTeamView.FullName)
+        , nameof(SportTeamView.Description)
     };
     object? getValue<T>(string propertyname, T item) {
         var pi = typeof(T).GetProperty(propertyname);

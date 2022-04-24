@@ -13,6 +13,7 @@ namespace eSportSchool.Facade.Party
         [DisplayName("Date of birth")] public DateTime? DoB { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Full name")]public string? FullName { get; set; }
+        [DisplayName("Count of sports teams")] public string? SportTeamsCount { get; set; }
 
     }
     public sealed class TrainerViewFactory : BaseViewFactory<TrainerView, Trainer, TrainerData>
@@ -21,6 +22,7 @@ namespace eSportSchool.Facade.Party
         public override TrainerView Create(Trainer? e)
         {
             var v = base.Create(e);
+            v.SportTeamsCount = e.SportTeamsCount;
             v.FullName = e.FirstName+ " " + e.LastName;
             v.Description = e?.ToString();
             return v;

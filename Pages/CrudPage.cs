@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace eSportSchool.Pages
 {
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
-    where TView : UniqueView
+    where TView : UniqueView, new()
     where TEntity : UniqueEntity
     where TRepo : ICrudRepo<TEntity>
     {
