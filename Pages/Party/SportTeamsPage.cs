@@ -9,7 +9,6 @@ namespace eSportSchool.Pages.Party
     {
         private readonly IKindOfSportRepo sports;
         private readonly ITrainersRepo trainers;
-        private string fullName;
         public SportTeamsPage(ISportTeamsRepo r, IKindOfSportRepo s, ITrainersRepo t) : base(r) {
             sports = s ; trainers = t; 
         }

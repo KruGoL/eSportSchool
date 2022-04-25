@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
-using Microsoft.Build.Framework;
+using RequiredAttribute = Microsoft.Build.Framework.RequiredAttribute;
 
 namespace eSportSchool.Facade.Party
 {
@@ -11,7 +12,8 @@ namespace eSportSchool.Facade.Party
         [DisplayName("Trainer name")] public string? OwnerName { get; set; }
         [DisplayName("Team name")] public string? Title { get; set; }
         [DisplayName("Kind of sport")] public string? SportId { get; set; }
-        [DisplayName("Team created")] public DateTime? CreatedDate { get; set; }
+
+        [DisplayName("Team created")][DataType(DataType.Date)] public DateTime? CreatedDate { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Full name")] public string? FullName { get; set; }
     }

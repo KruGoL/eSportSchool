@@ -1,5 +1,6 @@
 ﻿using eSportSchool.Data.Party;
 using eSportSchool.Domain.Combined;
+using System.ComponentModel.DataAnnotations;
 
 namespace eSportSchool.Domain.Party
 {
@@ -14,7 +15,7 @@ namespace eSportSchool.Domain.Party
         public IsoGender Gender => getValue(Data?.Gender);
         public DateTime DoB => getValue(Data?.DoB);
         public string FullName => FirstName + " " + LastName;
-        public override string ToString() => $"{FirstName}{LastName}({Gender},{DoB})";
+        public override string ToString() => $"{FirstName} {LastName} ({Gender}, {DoB.ToString("dd.MM.yyyy")})";
 
         public List<SportTeam?> SportTeams => GetRepo.Instance<ISportTeamsRepo>()?
                        .GetAll(x => x.OwnerId)?
