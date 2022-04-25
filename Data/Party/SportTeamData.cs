@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace eSportSchool.Data.Party
 {
     public sealed class SportTeamData : UniqueData

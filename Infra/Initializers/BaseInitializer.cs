@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using eSportSchool.Data;
-using eSportSchool.Infra.Initializers.Sport;
 
 namespace eSportSchool.Infra.Initializers
 {
@@ -21,18 +20,5 @@ namespace eSportSchool.Infra.Initializers
         }
         protected abstract IEnumerable<TData> getEntities { get; }
         internal static bool isCorrectIsoCode(string id) => string.IsNullOrWhiteSpace(id) ? false : char.IsLetter(id[0]);
-    }
-
-    public static class eSportSchoolDBInitializer
-    {
-        public static void Init(eSportSchoolDB? db)
-        {
-            new AddressesInitializer(db).Init();
-            new TrainersInitializer(db).Init();
-            new SportTeamsInitializer(db).Init();
-            new CountriesInitializer(db).Init();
-            new CurrenciesInitializer(db).Init();
-            new KindOfSportInitializer(db).Init();
-        }
     }
 }

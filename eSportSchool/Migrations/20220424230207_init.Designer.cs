@@ -12,7 +12,7 @@ using eSportSchool.Data;
 namespace eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220419103508_init")]
+    [Migration("20220424230207_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,24 @@ namespace eSportSchool.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("eSportSchool.Data.Сombined.TrainerSportTeamData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("STeamId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrainerSportTeams", "eSportSchool");
+                });
 
             modelBuilder.Entity("eSportSchool.Data.Party.AddressData", b =>
                 {
@@ -123,9 +141,6 @@ namespace eSportSchool.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Gender")

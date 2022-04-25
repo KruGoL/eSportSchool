@@ -29,6 +29,7 @@ namespace eSportSchool.Infra
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
             _ = (b?.Entity<KindOfSportData>()?.ToTable(nameof(KindOfSports), s));
+            _ = b?.Entity<TrainerSportTeamData>()?.ToTable(nameof(TrainerSportTeams), s);
         }
     }
 }

@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eSportSchool.Pages.Party
 {
-    public class TrainerSportTeamsPage : PagedPage<TrainerSportTeamView, TrainerSportTeam, ITrainerSportTeamRepo>
+    public class TrainerSportTeamsPage : PagedPage<TrainerSportTeamView, TrainerSportTeam, ITrainerSportTeamsRepo>
     {
         private readonly ITrainersRepo trainers;
         private readonly ISportTeamsRepo teams;
-        public TrainerSportTeamsPage(ITrainerSportTeamRepo r, ITrainersRepo t, ISportTeamsRepo st) : base(r)
+        public TrainerSportTeamsPage(ITrainerSportTeamsRepo r, ITrainersRepo t, ISportTeamsRepo st) : base(r)
         {
             trainers = t;
             teams = st;

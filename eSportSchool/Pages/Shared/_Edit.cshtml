@@ -3,6 +3,7 @@
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
     ViewData["Title"] = "Edit";
     Layout = "_Layout";
+
 }
 
 <h1>@ViewData["SubTitle"]</h1>

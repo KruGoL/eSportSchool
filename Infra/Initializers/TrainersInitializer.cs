@@ -1,4 +1,5 @@
-﻿using eSportSchool.Data.Party;
+﻿using eSportSchool.Data;
+using eSportSchool.Data.Party;
 
 namespace eSportSchool.Infra.Initializers
 {
@@ -9,10 +10,9 @@ namespace eSportSchool.Infra.Initializers
         {
             var trainer = new TrainerData
             {
-                Id = firstName + lastName + "Id",
+                Id = UniqueData.NewId,
                 FirstName = firstName,
                 LastName = lastName,
-                FullName = firstName + " " + lastName,
                 Gender = gender,
                 DoB = dayOfBirth
             };

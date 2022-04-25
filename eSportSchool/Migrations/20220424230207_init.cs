@@ -137,13 +137,26 @@ namespace eSportSchool.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: true),
                     DoB = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trainers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TrainerSportTeams",
+                schema: "eSportSchool",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TrainerId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    STeamId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TrainerSportTeams", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -331,6 +344,10 @@ namespace eSportSchool.Migrations
 
             migrationBuilder.DropTable(
                 name: "Trainers",
+                schema: "eSportSchool");
+
+            migrationBuilder.DropTable(
+                name: "TrainerSportTeams",
                 schema: "eSportSchool");
 
             migrationBuilder.DropTable(

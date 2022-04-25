@@ -3,7 +3,7 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Domain.Combined
 {
-    public interface ITrainerSportTeamRepo : IRepo<TrainerSportTeam> { }
+    public interface ITrainerSportTeamsRepo : IRepo<TrainerSportTeam> { }
     public class TrainerSportTeam : UniqueEntity<TrainerSportTeamData>
     {
         public TrainerSportTeam() : this(new()) { }

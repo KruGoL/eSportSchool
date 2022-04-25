@@ -7,7 +7,7 @@ namespace eSportSchool.Domain
     {
         public static string DefaultStr = "Undefined";
         private const bool defaultBool = false;
-        private static DateTime defaultDate => DateTime.MinValue;
+        private static DateTime defaultDate => DateTime.Now;
         protected static string getValue(string? v) => v ?? DefaultStr;
         protected static bool getValue(bool? v) => v ?? defaultBool;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;

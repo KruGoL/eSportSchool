@@ -11,7 +11,6 @@ namespace eSportSchool.Pages.Party
 
         protected override KindOfSportView toView(KindOfSport? entity) => new KindOfSportViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-            nameof(KindOfSportView.Id),
             nameof(KindOfSportView.Name),
             nameof(KindOfSportView.Description),
         };

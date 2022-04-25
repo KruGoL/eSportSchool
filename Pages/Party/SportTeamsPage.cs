@@ -9,18 +9,17 @@ namespace eSportSchool.Pages.Party
     {
         private readonly IKindOfSportRepo sports;
         private readonly ITrainersRepo trainers;
-        public SportTeamsPage(ISportTeamsRepo r, IKindOfSportRepo s, ITrainersRepo t) : base(r) {sports = s ; trainers = t; }
+        public SportTeamsPage(ISportTeamsRepo r, IKindOfSportRepo s, ITrainersRepo t) : base(r) {
+            sports = s ; trainers = t; 
+        }
 
         protected override SportTeam toObject(SportTeamView? item) => new SportTeamViewFactory().Create(item);
         protected override SportTeamView toView(SportTeam? entity) => new SportTeamViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-            nameof(SportTeamView.Id),
-            nameof(SportTeamView.OwnerId),
             nameof(SportTeamView.Title),
             nameof(SportTeamView.SportId),
+            nameof(SportTeamView.OwnerId),
             nameof(SportTeamView.CreatedDate),
-            nameof(SportTeamView.Description),
-            nameof(SportTeamView.FullName)
         };
         public IEnumerable<SelectListItem> Sports
            => sports?.GetAll(x => x.Name)?
@@ -49,6 +48,5 @@ namespace eSportSchool.Pages.Party
             }
             else return r;
         }
-        public List<Trainer?> TrainerList => toObject(Item).Trainers;
     }
 }
