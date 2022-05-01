@@ -15,7 +15,7 @@ namespace eSportSchool.Tests.Domain
     [TestClass]
     public abstract class EntityTDataTests : AbstractClassTests
     {
-        private class testClass : UniqueEntity<AddressData> { }
+        private class testClass : UniqueEntity<TrainerData> { }
         protected override object createObj() => new testClass();
     }
 }

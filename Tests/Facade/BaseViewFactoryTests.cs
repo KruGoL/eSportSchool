@@ -9,9 +9,9 @@ namespace eSportSchool.Tests.Facade
     [TestClass]
     public class BaseViewFactoryTests : AbstractClassTests
     {
-        private class testClass : BaseViewFactory<AddressView, Address, AddressData>
+        private class testClass : BaseViewFactory<TrainerView, Trainer, TrainerData>
         {
-            protected override Address toEntity(AddressData d) => new Address(d);
+            protected override Trainer toEntity(TrainerData d) => new Trainer(d);
         }
         protected override object createObj() => new testClass();
     }

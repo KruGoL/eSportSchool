@@ -10,7 +10,7 @@ namespace eSportSchool.Tests.Data.Party
         [TestMethod] public void IdTest() => IsProperty<string>();
         [TestMethod] public void FirstNameTest() => IsProperty<string?>();
         [TestMethod] public void LastNameTest() => IsProperty<string?>();
-        [TestMethod] public void GenderTest() => IsProperty<bool?>();
+        [TestMethod] public void GenderTest() => IsProperty<IsoGender?>();
         [TestMethod] public void DoBTest() => IsProperty<DateTime?>();
     }
 }

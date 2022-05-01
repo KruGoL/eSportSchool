@@ -1,8 +1,6 @@
 ﻿namespace eSportSchool.Data.Sport
 {
-    public class KindOfSportData : UniqueData
+    public class KindOfSportData : NamedData
     {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
     }
 }

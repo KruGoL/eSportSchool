@@ -11,9 +11,6 @@ namespace eSportSchool.Infra
         public DbSet<TrainerData>? Trainers { get; internal set; }
         public DbSet<TrainerSportTeamData>? TrainerSportTeams { get; internal set; }
         public DbSet<SportTeamData>? SportTeams { get; internal set; }
-        public DbSet<AddressData>? Addresses { get; internal set; }
-        public DbSet<CountryData>? Countries { get; internal set; }
-        public DbSet<CurrencyData>? Currencies { get; internal set; }
         public DbSet<KindOfSportData>? KindOfSports { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
@@ -25,9 +22,6 @@ namespace eSportSchool.Infra
             var s = nameof(eSportSchoolDB)[0..^2];
             _ = (b?.Entity<TrainerData>()?.ToTable(nameof(Trainers), s));
             _ = (b?.Entity<SportTeamData>()?.ToTable(nameof(SportTeams), s));
-            _ = (b?.Entity<AddressData>()?.ToTable(nameof(Addresses), s));
-            _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
-            _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
             _ = (b?.Entity<KindOfSportData>()?.ToTable(nameof(KindOfSports), s));
             _ = b?.Entity<TrainerSportTeamData>()?.ToTable(nameof(TrainerSportTeams), s);
         }

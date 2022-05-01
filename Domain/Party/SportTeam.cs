@@ -22,7 +22,7 @@ namespace eSportSchool.Domain.Party
         // public KindOfSport? Sport { get; set; }
         public KindOfSport? Sport => GetRepo.Instance<IKindOfSportRepo>()?
             .GetAll(x => x.Id)?
-            .Where(x => x.Id == SportId).First();
+            .Where(x => x.Id == SportId).FirstOrDefault();
 
     }
 }

@@ -9,13 +9,13 @@ namespace eSportSchool.Tests.Infra
     [TestClass]
     public class RepoTests : AbstractClassTests
     {
-        private class testClass : Repo<Address, AddressData>
+        private class testClass : Repo<Trainer, TrainerData>
         {
-            public testClass(DbContext? c, DbSet<AddressData>? s) : base(c, s)
+            public testClass(DbContext? c, DbSet<TrainerData>? s) : base(c, s)
             {
             }
 
-            protected override Address toDomain(AddressData d) => new(d);
+            protected override Trainer toDomain(TrainerData d) => new(d);
         }
         protected override object createObj() => new testClass(null, null);
     }

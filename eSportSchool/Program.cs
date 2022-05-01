@@ -26,9 +26,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<ISportTeamsRepo, SportTeamsRepo>();
 builder.Services.AddTransient<ITrainersRepo, TrainersRepo>();
-builder.Services.AddTransient<IAddressRepo, AddressRepo>();
-builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
-builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 builder.Services.AddTransient<IKindOfSportRepo, KindOfSportRepo>();
 builder.Services.AddTransient<ITrainerSportTeamsRepo, TrainerSportTeamsRepo>();
 
