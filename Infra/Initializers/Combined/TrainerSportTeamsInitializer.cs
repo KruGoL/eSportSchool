@@ -1,8 +1,7 @@
 ﻿using eSportSchool.Data;
-using eSportSchool.Data.Сombined;
+using eSportSchool.Data.Party;
 
-namespace eSportSchool.Infra.Initializers.Combined
-{
+namespace eSportSchool.Infra.Initializers.Combined {
     public sealed class TrainerSportTeamsInitializer : BaseInitializer<TrainerSportTeamData>
     {
         public TrainerSportTeamsInitializer(eSportSchoolDB? db) : base(db, db?.TrainerSportTeams) { }

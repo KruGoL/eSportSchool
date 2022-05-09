@@ -1,4 +1,7 @@
-﻿using eSportSchool.Facade.Party;
+﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
+using eSportSchool.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -9,13 +12,13 @@ using System.Threading.Tasks;
 namespace eSportSchool.Tests.Facade.Party
 {
     [TestClass]
-    public class SportTeamViewTests: SealedClassTests<SportTeamView>
+    public class SportTeamViewTests: SealedClassTests<SportTeamView, NamedView>
     {
-        [TestMethod] public void IdTest() => IsProperty<string>();
-        [TestMethod] public void OwnerIdTest() => IsProperty<string?>();
-        [TestMethod] public void TitleTest() => IsProperty<string?>();
-        [TestMethod] public void CreatedDateTest() => IsProperty<DateTime?>();
-        [TestMethod] public void DescriptionTest() => IsProperty<string?>();
-        [TestMethod] public void FullNameTest() => IsProperty<string?>();
+        [TestMethod] public void IdTest() => isProperty<string>();
+        [TestMethod] public void OwnerIdTest() => isProperty<string?>();
+        [TestMethod] public void NameTest() => isProperty<string?>();
+        [TestMethod] public void CreatedDateTest() => isProperty<DateTime?>();
+        [TestMethod] public void DescriptionTest() => isProperty<string?>();
+        [TestMethod] public void FullNameTest() => isProperty<string?>();
     }
 }

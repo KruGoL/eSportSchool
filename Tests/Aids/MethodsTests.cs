@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 
 namespace eSportSchool.Tests.Aids {
-    [TestClass] public class MethodsTests : IsTypeTested {
+    [TestClass] public class MethodsTests : TypeTests {
         MethodInfo[] methods = typeof(MethodsTests).GetMethods(BindingFlags.Public);
         [TestMethod]
         public void HasAttributeTest()

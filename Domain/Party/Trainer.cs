@@ -1,9 +1,6 @@
 ﻿using eSportSchool.Data.Party;
-using eSportSchool.Domain.Combined;
-using System.ComponentModel.DataAnnotations;
 
-namespace eSportSchool.Domain.Party
-{
+namespace eSportSchool.Domain.Party {
     public interface ITrainersRepo : IRepo<Trainer> { }
     public sealed class Trainer:UniqueEntity<TrainerData> 
     {
@@ -17,10 +14,11 @@ namespace eSportSchool.Domain.Party
         public string FullName => FirstName + " " + LastName;
         public override string ToString() => $"{FirstName} {LastName} ({Gender}, {DoB.ToString("dd.MM.yyyy")})";
 
-        public List<SportTeam?> SportTeams => GetRepo.Instance<ISportTeamsRepo>()?
+        public List<SportTeam> SportTeams 
+                        => GetRepo.Instance<ISportTeamsRepo>()?
                        .GetAll(x => x.OwnerId)?
                        .Where(x => x.OwnerId == Id)?
-                       .ToList() ?? new List<SportTeam?>();
+                       .ToList() ?? new List<SportTeam>();
         public string SportTeamsCount => SportTeams?.Count.ToString() ?? "Does not coach anyone";
     }
 }

@@ -1,10 +1,7 @@
 ﻿using eSportSchool.Data.Party;
-using eSportSchool.Data.Sport;
-using eSportSchool.Data.Сombined;
 using Microsoft.EntityFrameworkCore;
 
-namespace eSportSchool.Infra
-{
+namespace eSportSchool.Infra {
     public sealed class eSportSchoolDB: DbContext
     {
         public eSportSchoolDB(DbContextOptions<eSportSchoolDB> options) : base(options) { }

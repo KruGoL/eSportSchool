@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using eSportSchool.Data.Party;
 
 namespace eSportSchool.Tests.Aids {
-    [TestClass] public class GetNamespaceTests : IsTypeTested 
+    [TestClass] public class GetNamespaceTests : TypeTests 
     {
         [TestMethod]
         public void OfTypeTest()

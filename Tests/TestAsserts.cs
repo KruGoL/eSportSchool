@@ -6,7 +6,7 @@ namespace eSportSchool.Tests
 {
     public abstract class TestAsserts
     {
-        protected static void isTrue(bool? b, string? msg = null) => Assert.IsTrue(b ?? false, msg?? string.Empty);
+        protected static void isTrue(bool? b, string? msg = null) => Assert.IsTrue(b ?? false, msg ?? string.Empty);
         protected static void isFalse(bool? b, string? msg = null) => Assert.IsFalse(b ?? true, msg ?? string.Empty);
         protected static void isInconclusive(string? s = null) => Assert.Inconclusive(s ?? string.Empty);
         protected static void isNotNull([NotNull] object? o = null, string? msg = null) => Assert.IsNotNull(o, msg);

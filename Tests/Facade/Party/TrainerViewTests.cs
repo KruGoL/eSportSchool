@@ -1,4 +1,6 @@
 ﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -6,13 +8,13 @@ using System;
 namespace eSportSchool.Tests.Facade.Party
 {
     [TestClass]
-    public class TrainerViewTests: SealedClassTests<TrainerView>
+    public class TrainerViewTests: SealedClassTests<TrainerView, UniqueView>
     {
-        [TestMethod] public void IdTest() => IsProperty<string>();
-        [TestMethod] public void FirstNameTest() => IsProperty<string?>();
-        [TestMethod] public void LastNameTest() => IsProperty<string?>();
-        [TestMethod] public void GenderTest() => IsProperty<IsoGender?>();
-        [TestMethod] public void DoBTest() => IsProperty<DateTime?>();
-        [TestMethod] public void FullNameTest() => IsProperty<string?>();
+        [TestMethod] public void IdTest() => isProperty<string>();
+        [TestMethod] public void FirstNameTest() => isProperty<string?>();
+        [TestMethod] public void LastNameTest() => isProperty<string?>();
+        [TestMethod] public void GenderTest() => isProperty<IsoGender?>();
+        [TestMethod] public void DoBTest() => isProperty<DateTime?>();
+        [TestMethod] public void FullNameTest() => isProperty<string?>();
     }
 }

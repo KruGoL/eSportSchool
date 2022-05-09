@@ -10,7 +10,7 @@
             if (string.IsNullOrEmpty(s)) return string.Empty;
             for (var i = s.Length; i > 0; i--) {
                 var c = s[i - 1];
-                s = s.Substring(0, i - 1);
+                s = s[..(i - 1)];
                 if (c == separator) return s;
             }
             return s;

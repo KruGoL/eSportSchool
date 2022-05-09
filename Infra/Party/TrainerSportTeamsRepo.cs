@@ -1,14 +1,11 @@
-﻿using eSportSchool.Data.Сombined;
-using eSportSchool.Domain.Combined;
+﻿using eSportSchool.Data.Party;
+using eSportSchool.Domain.Party;
 
-namespace eSportSchool.Infra.Combined
-{
-    public class TrainerSportTeamsRepo : Repo<TrainerSportTeam, TrainerSportTeamData>, ITrainerSportTeamsRepo
-    {
+namespace eSportSchool.Infra.Party {
+    public class TrainerSportTeamsRepo : Repo<TrainerSportTeam, TrainerSportTeamData>, ITrainerSportTeamsRepo {
         public TrainerSportTeamsRepo(eSportSchoolDB? db) : base(db, db?.TrainerSportTeams) { }
         protected override TrainerSportTeam toDomain(TrainerSportTeamData d) => new(d);
-        internal override IQueryable<TrainerSportTeamData> addFilter(IQueryable<TrainerSportTeamData> q)
-        {
+        internal override IQueryable<TrainerSportTeamData> addFilter(IQueryable<TrainerSportTeamData> q) {
             var y = CurrentFilter;
             return string.IsNullOrWhiteSpace(y)
                 ? q : q.Where(

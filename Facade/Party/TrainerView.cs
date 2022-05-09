@@ -26,7 +26,7 @@ namespace eSportSchool.Facade.Party
         }
         public override TrainerView Create(Trainer? e) {
             var v = base.Create(e);
-            v.SportTeamsCount = e.SportTeamsCount;
+            v.SportTeamsCount = e?.SportTeamsCount;
             v.FullName = e?.ToString();
             v.Gender = e?.Gender;
             return v;

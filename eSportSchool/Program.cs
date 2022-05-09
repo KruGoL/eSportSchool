@@ -1,13 +1,9 @@
 using eSportSchool.Data;
 using eSportSchool.Domain;
-using eSportSchool.Domain.Combined;
 using eSportSchool.Domain.Party;
-using eSportSchool.Domain.Sport;
 using eSportSchool.Infra;
-using eSportSchool.Infra.Combined;
 using eSportSchool.Infra.Initializers;
 using eSportSchool.Infra.Party;
-using eSportSchool.Infra.Sport;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

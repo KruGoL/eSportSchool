@@ -3,11 +3,10 @@ using eSportSchool.Data;
 
 namespace eSportSchool.Tests.Data {
     [TestClass]
-    public class NamedDataTests : AbstractClassTests {
+    public class NamedDataTests : AbstractClassTests<NamedData, UniqueData> {
         private class testClass : NamedData { }
-        protected override object createObj() => new testClass();
-       // [TestMethod] public void CodeTest() => IsProperty<string>();
-        [TestMethod] public void NameTest() => IsProperty<string?>();
-        [TestMethod] public void DescriptionTest() => IsProperty<string?>();
+        protected override NamedData createObj() => new testClass();
+        [TestMethod] public void NameTest() => isProperty<string?>();
+        [TestMethod] public void DescriptionTest() => isProperty<string?>();
     }
 }

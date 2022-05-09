@@ -4,19 +4,15 @@ using eSportSchool.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eSportSchool.Tests.Infra
-{
+namespace eSportSchool.Tests.Infra {
     [TestClass]
-    public class RepoTests : AbstractClassTests
-    {
-        private class testClass : Repo<Trainer, TrainerData>
-        {
-            public testClass(DbContext? c, DbSet<TrainerData>? s) : base(c, s)
-            {
-            }
+    public class RepoTests : AbstractClassTests<Repo<KindOfSport, KindOfSportData>, PagedRepo<KindOfSport, KindOfSportData>> {
+        private class testClass : Repo<KindOfSport, KindOfSportData> {
+            public testClass(DbContext? c, DbSet<KindOfSportData>? s) : base(c, s) { }
 
-            protected override Trainer toDomain(TrainerData d) => new(d);
+            protected override KindOfSport toDomain(KindOfSportData d) => new(d);
         }
-        protected override object createObj() => new testClass(null, null);
+        protected override Repo<KindOfSport, KindOfSportData> createObj() => new testClass(null, null);
     }
 }
+

@@ -1,11 +1,8 @@
-﻿using eSportSchool.Data.Сombined;
-using eSportSchool.Domain.Party;
+﻿using eSportSchool.Data.Party;
 
-namespace eSportSchool.Domain.Combined
-{
+namespace eSportSchool.Domain.Party {
     public interface ITrainerSportTeamsRepo : IRepo<TrainerSportTeam> { }
-    public class TrainerSportTeam : UniqueEntity<TrainerSportTeamData>
-    {
+    public sealed class TrainerSportTeam : UniqueEntity<TrainerSportTeamData> {
         public TrainerSportTeam() : this(new()) { }
         public TrainerSportTeam(TrainerSportTeamData d) : base(d) { }
         public string TrainerId => getValue(Data?.TrainerId);

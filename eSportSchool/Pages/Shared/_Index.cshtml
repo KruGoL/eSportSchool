@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Name"] = "Index";
     var firstDisabled = (Model.PageIndex != 0)? "": "disabled";
     var nextDisabled = (Model.HasNextPage) ? "": "disabled";
     var prevDisabled = (Model.HasPreviousPage)? "": "disabled";
@@ -8,7 +8,7 @@
     Layout = "_Layout";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Name"]</h1>
 
 <p> 
     <a style="text-decoration:none;" asp-page="Create" 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace eSportSchool.Tests.Aids {
     [TestClass]
-    public class GetRandomTests : IsTypeTested {
+    public class GetRandomTests : TypeTests {
 
         private void test<T>(T min, T max) where T : IComparable<T> {
             var x = GetRandom.Value(min, max);

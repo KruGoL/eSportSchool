@@ -8,9 +8,7 @@ namespace eSportSchool.Aids
         private static void minFirst<T>(ref T min, ref T max) where T : IComparable<T>
         {
             if (min.CompareTo(max) < 0) return;
-            var v = min;
-            min = max;
-            max = v;
+            (max, min) = (min, max);
         }
         public static int Int32(int? min = null, int? max = null)
         {

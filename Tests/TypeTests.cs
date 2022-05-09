@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 
 namespace eSportSchool.Tests {
-    public class IsTypeTested : TestAsserts {
+    public class TypeTests : TestAsserts {
         private string? nameOfTest;
         private string? nameOfType;
         private string? namespaceOfTest;
@@ -45,15 +45,13 @@ namespace eSportSchool.Tests {
         private static bool isCorrectTestMethod(string x, Type t) => isCorrectlyInherited(t) && isTestClass(t) && isTestMethod(x, t);
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>() ?? false;
         private static bool isTestMethod(string methodName, Type t) => t?.Method(methodName).HasAttribute<TestMethodAttribute>() ?? false;
-        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
+        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(TypeTests));
 
         private static List<string>? getMembers(Type? t) => t?.DeclaredMembers();
         private static Type? getType(Assembly? a, string? name) {
             if (string.IsNullOrWhiteSpace(name)) return null;
             foreach (var t in a?.DefinedTypes ?? Array.Empty<TypeInfo>())
-            {
                 if (t.Name.StartsWith(name)) return t.AsType();
-            }
             return null;
         }
         private static Assembly? getAssembly(string? name) {

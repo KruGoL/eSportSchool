@@ -12,7 +12,7 @@ namespace eSportSchool.Infra.Initializers
             {
                 Id = UniqueData.NewId,
                 OwnerId = ownerId,
-                Title = title,
+                Name = title,
                 SportId = sportId,
                 Description = description,
                 CreatedDate = createdDate

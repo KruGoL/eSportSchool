@@ -1,13 +1,14 @@
 ﻿using eSportSchool.Aids;
 using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace eSportSchool.Tests.Facade.Party
 {
     [TestClass]
-    public class TrainerViewFactoryTests : SealedClassTests<TrainerViewFactory>
+    public class TrainerViewFactoryTests : SealedClassTests<TrainerViewFactory, BaseViewFactory<TrainerView, Trainer, TrainerData>>
     {
         [TestMethod] public void CreateTest() { }
         [TestMethod]

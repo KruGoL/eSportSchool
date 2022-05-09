@@ -1,12 +1,12 @@
 ﻿using eSportSchool.Aids;
 using eSportSchool.Data;
-using eSportSchool.Data.Sport;
+using eSportSchool.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 
 namespace eSportSchool.Tests.Aids {
-    [TestClass] public class TypesTests : IsTypeTested {
+    [TestClass] public class TypesTests : TypeTests {
         private Type type = typeof(object);
         private string? nameSpace;
         private string? fullName;
@@ -60,7 +60,7 @@ namespace eSportSchool.Tests.Aids {
         public void DeclaredMembersTest() {
             areEqual(1, type?.DeclaredMembers()?.Count);
             var l = typeof(NamedData)?.DeclaredMembers();
-            areEqual(7, l?.Count);
+            areEqual(6, l?.Count);
         }
         [TestMethod]
         public void IsInheritedTest() {

@@ -1,11 +1,11 @@
 ﻿using eSportSchool.Aids;
-using eSportSchool.Data.Sport;
+using eSportSchool.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
 namespace eSportSchool.Tests.Aids {
     [TestClass]
-    public class ListsTests : IsTypeTested {
+    public class ListsTests : TypeTests {
         private List<int> list = new();
         [TestInitialize] public void Init() => list = new List<int>() { 1, 2, 3, 4, 5, 6 };
         [TestMethod] public void GetFirstTest() => areEqual(1, Lists.GetFirst(list));
