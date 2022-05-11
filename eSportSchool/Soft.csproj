@@ -5,8 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-eSportSchool-DD1ADB10-D675-4977-8D94-6DC943C0982C</UserSecretsId>
-    <AssemblyName>$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</AssemblyName>
-    <RootNamespace>$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
