@@ -1,0 +1,11 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+
+@model eSportSchool.Pages.Party.TrainersPage
+
+@{
+    var photoPath = "~/img/trainers/" + (Model.Item.ImgPath ?? "default.jpg");
+}
+<div >
+    <img class="rounded mx-auto d-block" src="@photoPath"  asp-append-version="true"/>
+</div>
+

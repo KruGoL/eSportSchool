@@ -6,5 +6,6 @@
         public  string? LastName { get; set; }
         public IsoGender? Gender { get; set; }
         public DateTime? DoB { get; set; }
+        public string? ImgPath { get; set; }
     }
 }

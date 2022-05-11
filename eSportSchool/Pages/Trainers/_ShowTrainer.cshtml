@@ -1,6 +1,7 @@
 ﻿@model eSportSchool.Pages.Party.TrainersPage
 @using eSportSchool.Pages.Extensions
 
+@Html.Partial("_TrainerImg")
 @Html.MyViewerFor(m=>m.Item.FirstName)
 @Html.MyViewerFor(m=>m.Item.LastName)
 @Html.MyViewerFor(m=>m.Item.FullName)

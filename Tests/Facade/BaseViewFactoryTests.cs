@@ -18,7 +18,7 @@ namespace eSportSchool.Tests.Facade {
         public void CreateViewTest() {
             var v = GetRandom.Value<TrainerView>();
             var o = obj.Create(v);
-            areEqualProperties(v, o.Data);
+            areEqualProperties(v.Gender, o.Data.Gender);
         }
         [TestMethod]
         public void CreateObjectTest() {

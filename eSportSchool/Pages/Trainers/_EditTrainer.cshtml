@@ -1,8 +1,17 @@
 ﻿@model eSportSchool.Pages.Party.TrainersPage
 @using eSportSchool.Pages.Extensions
 
- 
     @Html.MyEditorFor(m => m.Item.FirstName)
     @Html.MyEditorFor(m => m.Item.LastName)
     @Html.MyDropDownFor(x => x.Item.Gender, Model.Genders)
     @Html.MyEditorFor(m => m.Item.DoB)
+
+    <div class= "row">
+       <div class="col-sm-2">
+            <label class="custom-file-label">Photo</label>
+       </div>
+       <div class="col-sm-10">
+            <input asp-for="Photo" type="file"  class="form-control" accept="image/png, image/jpeg">
+            <div class="invalid-feedback">Example invalid form file feedback</div>
+       </div>
+   </div>
