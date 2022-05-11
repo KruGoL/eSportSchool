@@ -1,10 +1,10 @@
 ﻿@{
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
-    ViewData["Title"] = "Create";
+    ViewData["Name"] = "Create";
     Layout = "_Layout";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Name"]</h1>
 
 <h4>@ViewData["SubTitle"]</h4>
 <hr />

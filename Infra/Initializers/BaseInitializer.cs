@@ -19,6 +19,5 @@ namespace eSportSchool.Infra.Initializers
             db?.SaveChanges();
         }
         protected abstract IEnumerable<TData> getEntities { get; }
-        internal static bool isCorrectIsoCode(string id) => string.IsNullOrWhiteSpace(id) ? false : char.IsLetter(id[0]);
     }
 }

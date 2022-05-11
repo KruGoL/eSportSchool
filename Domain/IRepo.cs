@@ -18,8 +18,7 @@
         public string? CurrentFilter { get; set; }
     }
     public interface ICrudRepo<T> : IBaseRepo<T> where T : UniqueEntity { }
-    public interface IBaseRepo<T> where T : UniqueEntity
-    {
+    public interface IBaseRepo<T> where T : UniqueEntity {
         bool Add(T obj);
         List<T> Get();
         List<T> GetAll<TKey>(Func<T, TKey>? orderBy = null);

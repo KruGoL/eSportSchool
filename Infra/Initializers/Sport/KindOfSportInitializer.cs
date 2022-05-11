@@ -1,9 +1,7 @@
 ﻿using eSportSchool.Data;
-using eSportSchool.Data.Sport;
-using eSportSchool.Domain;
+using eSportSchool.Data.Party;
 
-namespace eSportSchool.Infra.Initializers.Sport
-{
+namespace eSportSchool.Infra.Initializers.Sport {
     public sealed class KindOfSportInitializer : BaseInitializer<KindOfSportData>
     {
         private List<string> sportList = new List<string> { };

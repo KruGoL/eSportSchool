@@ -5,14 +5,16 @@ using Microsoft.EntityFrameworkCore;
 namespace eSportSchool.Infra
 {
     public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain>
-    where TDomain : UniqueEntity<TData>, new() where TData : UniqueData, new()
-    {
+    where TDomain : UniqueEntity<TData>, new() where TData : UniqueData, new() {
         protected readonly DbContext? db;
         protected readonly DbSet<TData>? set;
-        protected BaseRepo(DbContext? c, DbSet<TData>? s)
-        {
+        protected BaseRepo(DbContext? c, DbSet<TData>? s) {
             db = c;
             set = s;
+        }
+        internal void clear() {
+            set?.RemoveRange(set);
+            db?.SaveChanges();
         }
         public abstract bool Add(TDomain obj);
         public abstract Task<bool> AddAsync(TDomain obj);
@@ -26,5 +28,4 @@ namespace eSportSchool.Infra
         public abstract bool Update(TDomain obj);
         public abstract Task<bool> UpdateAsync(TDomain obj);
     }
-
 }

@@ -1,20 +1,15 @@
-﻿using eSportSchool.Data.Party;
+﻿using eSportSchool.Data;
+using eSportSchool.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eSportSchool.Tests.Data.Party
 {
     [TestClass]
-    public class SportTeamDataTests: SealedClassTests<SportTeamData>
+    public class SportTeamDataTests : SealedClassTests<SportTeamData, NamedData>
     {
-        [TestMethod] public void IdTest() => IsProperty<string>();
-        [TestMethod] public void OwnerIdTest() => IsProperty<string?>();
-        [TestMethod] public void TitleTest() => IsProperty<string?>();
-        [TestMethod] public void CreatedDateTest() => IsProperty<DateTime?>();
-        [TestMethod] public void DescriptionTest() => IsProperty<string?>();
+        [TestMethod] public void OwnerIdTest() => isProperty<string?>();
+        [TestMethod] public void SportIdTest() => isProperty<string?>();
+        [TestMethod] public void CreatedDateTest() => isProperty<DateTime?>();
     }
 }

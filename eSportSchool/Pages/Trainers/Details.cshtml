@@ -6,7 +6,7 @@
     Layout = "_Details";
     ViewData["Id"] = Model?.Item.Id ?? string.Empty;
     var columns = new[] { 
-        nameof(SportTeamView.Title)
+        nameof(SportTeamView.Name)
         , nameof(SportTeamView.Description)
     };
     object? getValue<T>(string propertyname, T item) {

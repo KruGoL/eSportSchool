@@ -1,7 +1,7 @@
 ﻿@model eSportSchool.Pages.Party.SportTeamsPage
 @using eSportSchool.Pages.Extensions
 
-@Html.MyViewerFor(m=>m.Item.Title)
+@Html.MyViewerFor(m=>m.Item.Name)
 @Html.MyViewerFor(m=>m.Item.OwnerName , Model.TrainerName(Model.Item.OwnerId))
 @Html.MyViewerFor(m=>m.Item.SportId , Model.SportName(Model.Item.SportId)) 
 @Html.MyViewerFor(m=>m.Item.FullName)

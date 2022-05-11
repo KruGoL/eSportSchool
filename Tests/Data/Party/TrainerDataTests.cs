@@ -1,16 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using eSportSchool.Data.Party;
+using eSportSchool.Data;
 
 namespace eSportSchool.Tests.Data.Party
 {
     [TestClass]
-    public class TrainerDataTests: SealedClassTests<TrainerData>
+    public class TrainerDataTests: SealedClassTests<TrainerData, UniqueData>
     {
-        [TestMethod] public void IdTest() => IsProperty<string>();
-        [TestMethod] public void FirstNameTest() => IsProperty<string?>();
-        [TestMethod] public void LastNameTest() => IsProperty<string?>();
-        [TestMethod] public void GenderTest() => IsProperty<bool?>();
-        [TestMethod] public void DoBTest() => IsProperty<DateTime?>();
+        [TestMethod] public void FirstNameTest() => isProperty<string?>();
+        [TestMethod] public void LastNameTest() => isProperty<string?>();
+        [TestMethod] public void GenderTest() => isProperty<IsoGender?>();
+        [TestMethod] public void DoBTest() => isProperty<DateTime?>();
     }
 }

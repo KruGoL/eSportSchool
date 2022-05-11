@@ -1,8 +1,7 @@
-﻿using eSportSchool.Domain.Sport;
-using eSportSchool.Facade.Sport;
+﻿using eSportSchool.Domain.Party;
+using eSportSchool.Facade.Party;
 
-namespace eSportSchool.Pages.Party
-{
+namespace eSportSchool.Pages.Party {
     public class KindOfSportsPage : PagedPage<KindOfSportView, KindOfSport, IKindOfSportRepo>
     {
         public KindOfSportsPage(IKindOfSportRepo r) : base(r) { }

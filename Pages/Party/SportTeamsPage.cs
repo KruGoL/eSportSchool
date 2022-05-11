@@ -1,10 +1,8 @@
 ﻿using eSportSchool.Domain.Party;
-using eSportSchool.Domain.Sport;
 using eSportSchool.Facade.Party;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace eSportSchool.Pages.Party
-{
+namespace eSportSchool.Pages.Party {
     public class SportTeamsPage : PagedPage<SportTeamView, SportTeam, ISportTeamsRepo>
     {
         private readonly IKindOfSportRepo sports;
@@ -16,7 +14,7 @@ namespace eSportSchool.Pages.Party
         protected override SportTeam toObject(SportTeamView? item) => new SportTeamViewFactory().Create(item);
         protected override SportTeamView toView(SportTeam? entity) => new SportTeamViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-            nameof(SportTeamView.Title),
+            nameof(SportTeamView.Name),
             nameof(SportTeamView.SportId),
             nameof(SportTeamView.OwnerId),
             nameof(SportTeamView.CreatedDate),

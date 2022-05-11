@@ -1,13 +1,13 @@
 ﻿using eSportSchool.Aids;
 using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
+using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eSportSchool.Tests.Facade.Party
-{
+namespace eSportSchool.Tests.Facade.Party {
     [TestClass]
-    public class SportTeamViewFactoryTests : SealedClassTests<SportTeamViewFactory>
+    public class SportTeamViewFactoryTests : SealedClassTests<SportTeamViewFactory, BaseViewFactory<SportTeamView, SportTeam, SportTeamData>>
     {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() {
@@ -18,7 +18,7 @@ namespace eSportSchool.Tests.Facade.Party
             areEqual(v.CreatedDate, e.CreatedDate);
             areEqual(v.Id, e.Id);
             areEqual(v.OwnerId, e.OwnerId);
-            areEqual(v.Title, e.Title);
+            areEqual(v.Name, e.Name);
             areEqual(v.Description, e.Description);
             areEqual(v.FullName, e.ToString());
         }
@@ -29,7 +29,7 @@ namespace eSportSchool.Tests.Facade.Party
             areEqual(e.CreatedDate, v.CreatedDate);
             areEqual(e.Id, v.Id);
             areEqual(e.OwnerId, v.OwnerId);
-            areEqual(e.Title, v.Title);
+            areEqual(e.Name, v.Name);
             areEqual(e.Description, v.Description);
             areNotEqual(e.ToString(), v.FullName);
         }

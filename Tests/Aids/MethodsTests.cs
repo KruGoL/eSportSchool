@@ -4,16 +4,18 @@ using System;
 using System.Reflection;
 
 namespace eSportSchool.Tests.Aids {
-    [TestClass] public class MethodsTests : IsTypeTested {
-        MethodInfo[] methods = typeof(MethodsTests).GetMethods(BindingFlags.Public);
+    [TestClass] public class MethodsTests : TypeTests {
         [TestMethod]
-        public void HasAttributeTest()
-        {
-            foreach (var method in methods)
-            {
-                var x = Methods.HasAttribute<Attribute>(method);
-                isTrue(x);
-            }
+        public void HasAttributeTest() {
+            var m = GetType().GetMethod(nameof(HasAttributeTest));
+            isTrue(Methods.HasAttribute<TestMethodAttribute>(m));
+            isFalse(Methods.HasAttribute<TestInitializeAttribute>(m));
+        }
+        [TestMethod]
+        public void GetAttributeTest() {
+            var m = GetType().GetMethod(nameof(GetAttributeTest));
+            isNotNull(Methods.GetAttribute<TestMethodAttribute>(m));
+            isNull(Methods.GetAttribute<TestInitializeAttribute>(m));
         }
     }
 }
