@@ -12,6 +12,7 @@ namespace eSportSchool.Domain.Party {
         public string LastName => getValue(Data?.LastName);
         public IsoGender Gender => getValue(Data?.Gender);
         public DateTime DoB => getValue(Data?.DoB);
+        public string ImgPath => getValue(Data?.ImgPath);
         public string FullName => FirstName + " " + LastName;
         public override string ToString() => $"{FirstName} {LastName} ({Gender.Description()}, {DoB})";
 

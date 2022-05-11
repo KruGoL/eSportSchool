@@ -14,6 +14,7 @@ namespace eSportSchool.Facade.Party
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Full name")]public string? FullName { get; set; }
         [DisplayName("Count of sports teams")] public string? SportTeamsCount { get; set; }
+        [DisplayName("Photo")] public string? ImgPath { get; set; }
 
     }
     public sealed class TrainerViewFactory : BaseViewFactory<TrainerView, Trainer, TrainerData>
