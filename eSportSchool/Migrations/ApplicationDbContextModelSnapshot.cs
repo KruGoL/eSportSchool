@@ -8,7 +8,7 @@ using eSportSchool.Data;
 
 #nullable disable
 
-namespace eSportSchool.Migrations
+namespace eSportSchool.eSportSchool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,22 +22,20 @@ namespace eSportSchool.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("eSportSchool.Data.Сombined.TrainerSportTeamData", b =>
+            modelBuilder.Entity("eSportSchool.Data.Party.KindOfSportData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("STeamId")
-                        .IsRequired()
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TrainerId")
-                        .IsRequired()
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TrainerSportTeams", "eSportSchool");
+                    b.ToTable("KindOfSports", "eSportSchool");
                 });
 
             modelBuilder.Entity("eSportSchool.Data.Party.SportTeamData", b =>
@@ -79,6 +77,9 @@ namespace eSportSchool.Migrations
                     b.Property<int?>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImgPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -87,20 +88,22 @@ namespace eSportSchool.Migrations
                     b.ToTable("Trainers", "eSportSchool");
                 });
 
-            modelBuilder.Entity("eSportSchool.Data.Sport.KindOfSportData", b =>
+            modelBuilder.Entity("eSportSchool.Data.Party.TrainerSportTeamData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("STeamId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("TrainerId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("KindOfSports", "eSportSchool");
+                    b.ToTable("TrainerSportTeams", "eSportSchool");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

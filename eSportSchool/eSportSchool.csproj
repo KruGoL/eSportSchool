@@ -41,4 +41,8 @@
     <None Include="wwwroot\txt\SportList.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
