@@ -12,7 +12,7 @@ namespace eSportSchool.Pages.Party
     public class TrainersPage : PagedPage<TrainerView, Trainer, ITrainersRepo>
     {
         [BindProperty]
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
         IHostingEnvironment _webHostEnv;
         public TrainersPage(ITrainersRepo r, IHostingEnvironment webHostEnv) : base(r)
         {
@@ -63,7 +63,7 @@ namespace eSportSchool.Pages.Party
         }
         private string UploadFile()
         {
-            string uniqueFileName = null;
+            string? uniqueFileName = null;
             if (Photo != null)
             {
                 string uploadsFolder = Path.Combine(_webHostEnv.WebRootPath, "img/trainers");
@@ -72,7 +72,7 @@ namespace eSportSchool.Pages.Party
 
                 using (var fs = new FileStream(filePath, FileMode.Create)) { Photo.CopyTo(fs); }
             }
-            return uniqueFileName;
+            return uniqueFileName ?? "default.jpg";
         }
     }
 }

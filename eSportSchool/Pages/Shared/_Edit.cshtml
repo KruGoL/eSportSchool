@@ -11,7 +11,7 @@
 <h4>@ViewData["Name"]</h4>
 <hr />
 
-<form method="post" 
+<form method="post" enctype="multipart/form-data"
     asp-page-handler = "Edit" 
     asp-route-order="@Model.CurrentOrder"
     asp-route-idx="@Model.PageIndex" 
