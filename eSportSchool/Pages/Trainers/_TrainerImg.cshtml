@@ -6,6 +6,6 @@
     var photoPath = "~/img/trainers/" + (Model.Item.ImgPath ?? "default.jpg");
 }
 <div >
-    <img class="rounded mx-auto d-block" src="@photoPath"  asp-append-version="true"/>
+    <img class="rounded mx-auto d-block" src="@photoPath" id="image_preview" alt="your image" width="200" height="250" asp-append-version="true"/>
 </div>
 

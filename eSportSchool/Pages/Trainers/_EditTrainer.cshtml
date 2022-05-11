@@ -1,6 +1,7 @@
 ﻿@model eSportSchool.Pages.Party.TrainersPage
 @using eSportSchool.Pages.Extensions
-
+    
+    @Html.Partial("_TrainerImg")
     @Html.MyEditorFor(m => m.Item.FirstName)
     @Html.MyEditorFor(m => m.Item.LastName)
     @Html.MyDropDownFor(x => x.Item.Gender, Model.Genders)
@@ -11,7 +12,22 @@
             <label class="custom-file-label">Photo</label>
        </div>
        <div class="col-sm-10">
-            <input asp-for="Photo" type="file"  class="form-control" accept="image/png, image/jpeg">
-            <div class="invalid-feedback">Example invalid form file feedback</div>
+            <input asp-for="Photo" type="file"  class="form-control" onchange="readfile(this);" accept="image/png, image/jpeg" >
+            <span asp-validation-for="Photo"></span>
        </div>
    </div>
+
+
+<script type="text/javascript">        
+    function readfile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#image_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

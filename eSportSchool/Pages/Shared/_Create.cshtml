@@ -8,7 +8,7 @@
 
 <h4>@ViewData["SubTitle"]</h4>
 <hr />
-<form method="post" 
+<form method="post" enctype="multipart/form-data"
      asp-page-handler = "Create" 
      asp-route-order="@Model.CurrentOrder"
      asp-route-idx="@Model.PageIndex" 
