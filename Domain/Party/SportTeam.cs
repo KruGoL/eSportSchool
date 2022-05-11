@@ -11,12 +11,14 @@ namespace eSportSchool.Domain.Party {
         public string OwnerId => getValue(Data?.OwnerId);
         public string SportId => getValue(Data?.SportId);
         public DateTime CreatedDate => getValue(Data?.CreatedDate);
-        public override string ToString() => $"{Name} : {Sport?.Name} ({CreatedDate:dd.MM.yyyy})";
+        public override string ToString() => $"{Name} : {KindOfSport?.Name} ({CreatedDate})";
 
-        // public KindOfSport? Sport { get; set; }
-        public KindOfSport? Sport => GetRepo.Instance<IKindOfSportRepo>()?
-            .GetAll(x => x.Id)?
-            .Where(x => x.Id == SportId).FirstOrDefault();
+        // public KindOfSport? KindOfSport { get; set; }
+
+        //public KindOfSport? KindOfSport => GetRepo.Instance<IKindOfSportRepo>()?
+        //    .GetAll(x => x.Id)?
+        //    .Where(x => x.Id == SportId).FirstOrDefault();
+        public KindOfSport? KindOfSport => GetRepo.Instance<IKindOfSportRepo>()?.Get(SportId);
 
     }
 }

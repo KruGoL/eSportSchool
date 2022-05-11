@@ -5,8 +5,7 @@ using eSportSchool.Facade;
 using eSportSchool.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eSportSchool.Tests.Facade.Party
-{
+namespace eSportSchool.Tests.Facade.Party {
     [TestClass]
     public class SportTeamViewFactoryTests : SealedClassTests<SportTeamViewFactory, BaseViewFactory<SportTeamView, SportTeam, SportTeamData>>
     {

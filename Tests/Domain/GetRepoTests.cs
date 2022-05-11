@@ -7,6 +7,7 @@ using System;
 namespace eSportSchool.Tests.Domain {
     [TestClass]
     public class GetRepoTests : TypeTests {
+
         private class testClass : IServiceProvider {
             public object? GetService(Type serviceType) {
                 throw new NotImplementedException();
@@ -14,12 +15,14 @@ namespace eSportSchool.Tests.Domain {
         }
         [TestMethod]
         public void InstanceTest()
-            => Assert.IsInstanceOfType(GetRepo.Instance<IKindOfSportRepo>(), typeof(KindOfSportRepo));
+            => Assert.IsInstanceOfType(GetRepo.Instance<ISportTeamsRepo>(), typeof(SportTeamsRepo));
         [TestMethod]
         public void SetServiceTest() {
+            var s = GetRepo.service;
             var x = new testClass();
             GetRepo.SetService(x);
             areEqual(x, GetRepo.service);
+            GetRepo.service = s;
         }
     }
 }

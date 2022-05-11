@@ -22,5 +22,6 @@ namespace eSportSchool.Tests.Aids {
             isTrue(Strings.IsTypeFullName(Strings.Remove(testStr, "1")));
         }
         [TestMethod] public void RemoveTailTest() => areEqual("a1b1c1.d1e1f1", Strings.RemoveTail(testStr));
+        [TestMethod] public void RemoveHeadTest() => areEqual("d1e1f1.g1h1i1", Strings.RemoveHead(testStr));
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 
 namespace eSportSchool.Tests {
-    public class TypeTests : TestAsserts {
+    public class TypeTests : HostTests {
         private string? nameOfTest;
         private string? nameOfType;
         private string? namespaceOfTest;
@@ -14,7 +14,6 @@ namespace eSportSchool.Tests {
         private Type? typeToBeTested;
         private List<string>? membersOfType;
         private List<string>? membersOfTest;
-
         [TestMethod] public void IsAllTested() => isAllTested();
         protected virtual void isAllTested() {
             nameOfTest = getName(this);
@@ -31,7 +30,6 @@ namespace eSportSchool.Tests {
             if (allAreTested()) return;
             reportNotAllIsTested();
         }
-
         private void reportNotAllIsTested() => isInconclusive($"Member \"{nameOfFirstNotTested()}\" is not tested");
         private string nameOfFirstNotTested() => membersOfType?.GetFirst() ?? string.Empty;
         private bool allAreTested() => membersOfType.IsEmpty();
@@ -46,7 +44,6 @@ namespace eSportSchool.Tests {
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>() ?? false;
         private static bool isTestMethod(string methodName, Type t) => t?.Method(methodName).HasAttribute<TestMethodAttribute>() ?? false;
         private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(TypeTests));
-
         private static List<string>? getMembers(Type? t) => t?.DeclaredMembers();
         private static Type? getType(Assembly? a, string? name) {
             if (string.IsNullOrWhiteSpace(name)) return null;

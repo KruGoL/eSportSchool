@@ -1,4 +1,5 @@
-﻿using eSportSchool.Data.Party;
+﻿using eSportSchool.Aids;
+using eSportSchool.Data.Party;
 
 namespace eSportSchool.Domain.Party {
     public interface ITrainersRepo : IRepo<Trainer> { }
@@ -12,7 +13,7 @@ namespace eSportSchool.Domain.Party {
         public IsoGender Gender => getValue(Data?.Gender);
         public DateTime DoB => getValue(Data?.DoB);
         public string FullName => FirstName + " " + LastName;
-        public override string ToString() => $"{FirstName} {LastName} ({Gender}, {DoB.ToString("dd.MM.yyyy")})";
+        public override string ToString() => $"{FirstName} {LastName} ({Gender.Description()}, {DoB})";
 
         public List<SportTeam> SportTeams 
                         => GetRepo.Instance<ISportTeamsRepo>()?

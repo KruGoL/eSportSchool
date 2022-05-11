@@ -2,7 +2,7 @@
 using eSportSchool.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace eSportSchool.Tests.Data.Combined {
+namespace eSportSchool.Tests.Data.Party {
     [TestClass]
     public class TrainerSportTeamDataTests : SealedClassTests<TrainerSportTeamData, UniqueData> {
         [TestMethod] public void TrainerIdTest() => isProperty<string>();

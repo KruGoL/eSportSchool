@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace eSportSchool.Tests
 {
@@ -14,6 +15,17 @@ namespace eSportSchool.Tests
         protected static void areEqual(object? expected, object? actual, string? msg = null) => Assert.AreEqual(expected, actual, msg);
         protected static void areNotEqual(object? expected, object? actual, string? msg = null) => Assert.AreNotEqual(expected, actual, msg);
         protected static void isInstanceOfType(object o, Type expectedType, string? msg = null) => Assert.IsInstanceOfType(o, expectedType, msg);
-
+        protected static void areEqualProperties(object? a, object? b) {
+            isNotNull(a);
+            isNotNull(b);
+            var tA = a.GetType();
+            var tB = b.GetType();
+            foreach (var piA in tA?.GetProperties() ?? Array.Empty<PropertyInfo>()) {
+                var vA = piA.GetValue(a, null);
+                var piB = tB?.GetProperty(piA.Name);
+                var vB = piB?.GetValue(b, null);
+                areEqual(vA, vB, $"For property {piA.Name}.");
+            }
+        }
     }
 }

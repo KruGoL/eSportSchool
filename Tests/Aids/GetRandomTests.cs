@@ -94,5 +94,38 @@ namespace eSportSchool.Tests.Aids {
             areNotEqual(x.LastName, y.LastName, nameof(x.LastName));
             areNotEqual(x.DoB, y.DoB, nameof(x.DoB));
         }
+        [TestMethod] public void EnumOfGenericTest() => test(() => GetRandom.EnumOf<IsoGender>());
+        [DataRow(typeof(IsoGender))]
+        [TestMethod] public void EnumOfTest(Type t) => test(() => GetRandom.EnumOf(t));
+        private void test<T>(Func<T> f, int count = 5) {
+            var x = f();
+            var y = f();
+            var i = 0;
+            while (x.Equals(y)) {
+                y = f();
+                if (i == count) areNotEqual(x, y);
+                i++;
+            }
+        }
+        [DataRow(typeof(bool?), false)]
+        [DataRow(typeof(int), false)]
+        [DataRow(typeof(decimal?), false)]
+        [DataRow(typeof(string), false)]
+        [DataRow(typeof(IsoGender?), false)]
+        [DataRow(typeof(IsoGender), true)]
+        [DataRow(typeof(DateTime), false)]
+        [TestMethod]
+        public void IsEnumTest(Type t, bool expected)
+            => areEqual(expected, GetRandom.isEnum(t));
+
+        [DataRow(typeof(bool?), typeof(bool))]
+        [DataRow(typeof(int?), typeof(int))]
+        [DataRow(typeof(decimal?), typeof(decimal))]
+        [DataRow(typeof(string), typeof(string))]
+        [DataRow(typeof(IsoGender?), typeof(IsoGender))]
+        [DataRow(typeof(DateTime?), typeof(DateTime))]
+        [TestMethod]
+        public void GetUnderlyingTypeTest(Type nullable, Type expected)
+            => areEqual(expected, GetRandom.getUnderlyingType(nullable));
     }
 }

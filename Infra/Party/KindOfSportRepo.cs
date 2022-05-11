@@ -7,8 +7,9 @@ namespace eSportSchool.Infra.Party {
         protected override KindOfSport toDomain(KindOfSportData d) => new(d);
         internal override IQueryable<KindOfSportData> addFilter(IQueryable<KindOfSportData> q) {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
+            return string.IsNullOrWhiteSpace(y)               
+                ? q
+                : q.Where(
                     x => x.Id.Contains(y)
                     || x.Name.Contains(y)
                     || x.Description.Contains(y));

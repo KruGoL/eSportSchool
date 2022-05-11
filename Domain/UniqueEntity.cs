@@ -12,6 +12,7 @@ namespace eSportSchool.Domain
         protected static bool getValue(bool? v) => v ?? defaultBool;
         protected static IsoGender getValue(IsoGender? v) => v ?? IsoGender.NotApplicable;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
+        public abstract string Id { get; }
 
     }
     public abstract class UniqueEntity<TData> : UniqueEntity where TData : UniqueData, new()
@@ -19,6 +20,6 @@ namespace eSportSchool.Domain
         public TData Data { get; }
         public UniqueEntity() : this(new TData()) { }
         public UniqueEntity(TData d) => Data = d;
-        public string Id => getValue(Data?.Id);
+        public override string Id => getValue(Data?.Id);
     }
 }

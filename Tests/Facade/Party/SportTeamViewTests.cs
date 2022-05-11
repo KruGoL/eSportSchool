@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eSportSchool.Tests.Facade.Party
-{
+namespace eSportSchool.Tests.Facade.Party {
     [TestClass]
-    public class SportTeamViewTests: SealedClassTests<SportTeamView, NamedView>
-    {
+    public class SportTeamViewTests : SealedClassTests<SportTeamView, NamedView> {
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void OwnerIdTest() => isProperty<string?>();
+        [TestMethod] public void OwnerNameTest() => isProperty<string?>();
+        [TestMethod] public void SportIdTest() => isProperty<string?>();
         [TestMethod] public void NameTest() => isProperty<string?>();
         [TestMethod] public void CreatedDateTest() => isProperty<DateTime?>();
         [TestMethod] public void DescriptionTest() => isProperty<string?>();

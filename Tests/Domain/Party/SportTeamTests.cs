@@ -13,7 +13,13 @@ namespace eSportSchool.Tests.Domain.Party
         [TestMethod] public void OwnerIdTest() => isReadOnly(obj.Data.OwnerId);
         [TestMethod] public void SportIdTest() => isReadOnly(obj.Data.SportId);
         [TestMethod] public void CreatedDateTest() => isReadOnly(obj.Data.CreatedDate);
-        [TestMethod] public void ToStringTest() => isInconclusive();
-        [TestMethod] public void SportTest() => isInconclusive();
+        [TestMethod]
+        public void ToStringTest() {
+            var expected = $"{obj.Name} : {obj.KindOfSport?.Name} ({obj.CreatedDate})";
+            areEqual(expected, obj.ToString());
+        }
+        [TestMethod]
+        public void KindOfSportTest() => itemTest<IKindOfSportRepo, KindOfSport, KindOfSportData>(
+            obj.SportId, d => new KindOfSport(d), () => obj.KindOfSport);
     }
 }
