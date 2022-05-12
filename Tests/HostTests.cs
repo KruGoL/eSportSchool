@@ -3,6 +3,7 @@ using eSportSchool.Data;
 using eSportSchool.Domain;
 using eSportSchool.Domain.Party;
 using eSportSchool.Infra.Party;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
