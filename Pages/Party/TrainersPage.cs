@@ -21,6 +21,7 @@ namespace eSportSchool.Pages.Party
         protected override Trainer toObject(TrainerView? item) => new TrainerViewFactory().Create(item);
         protected override TrainerView toView(Trainer? entity) => new TrainerViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
+            nameof(TrainerView.ImgPath),
             nameof(TrainerView.FullName),
             nameof(TrainerView.FirstName),
             nameof(TrainerView.LastName),
@@ -35,7 +36,7 @@ namespace eSportSchool.Pages.Party
             => (x ?? IsoGender.NotApplicable).Description();
         public override object? GetValue(string name, TrainerView v)
         {
-            var r = base.GetValue(name, v);
+            var r = base.GetValue(name, v);          
             return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender)r) : r;
         }
         public List<SportTeam?> SportTeams => toObject(Item).SportTeams;
