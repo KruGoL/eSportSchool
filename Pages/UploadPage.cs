@@ -18,7 +18,6 @@ namespace eSportSchool.Pages
         protected string _item;
         protected string _folderPath;
         protected string _defaultFileName; 
-        private 
         IHostingEnvironment _webHostEnv;
         protected UploadPage(TRepo r, IHostingEnvironment webHostEnv) : base(r){_webHostEnv = webHostEnv;}
         protected string UploadFile(string folderPath,string defaultFileName = "Unknown file")
