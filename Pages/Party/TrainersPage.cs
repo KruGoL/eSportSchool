@@ -20,7 +20,6 @@ namespace eSportSchool.Pages.Party
         protected override TrainerView toView(Trainer? entity) => new TrainerViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
             nameof(TrainerView.ImgPath),
-            nameof(TrainerView.FullName),
             nameof(TrainerView.FirstName),
             nameof(TrainerView.LastName),
             nameof(TrainerView.SportTeamsCount),
