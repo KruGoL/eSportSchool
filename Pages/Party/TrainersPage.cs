@@ -3,8 +3,6 @@ using eSportSchool.Data.Party;
 using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eSportSchool.Pages.Party
