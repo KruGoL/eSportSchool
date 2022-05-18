@@ -26,15 +26,11 @@ builder.Services.AddTransient<ITrainerSportTeamsRepo, TrainerSportTeamsRepo>();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ApplicationDbContext>();
-    context.Database.Migrate();
-    // requires using Microsoft.Extensions.Configuration;
-    // Set password with the Secret Manager tool.
-    // dotnet user-secrets set SeedUserPW <pw>
-    await SeedData.Initialize(services);
+using (var scope = app.Services.CreateScope()) {
+    GetRepo.SetService(app.Services);
+    var db = scope.ServiceProvider.GetService<eSportSchoolDB>();
+    _ = (db?.Database?.EnsureCreated());
+    eSportSchoolDBInitializer.Init(db);
 }
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
