@@ -29,15 +29,14 @@ namespace eSportSchool.Domain.Party {
             .ToList() ?? new List<SportTeam>();
         public string KindOfSport {
             get {
-                string? k = null;
+                string? k = string.Empty;
                 foreach (SportTeam team in SportTeams) {
-                    if (k != team.KindOfSport?.Name) k += team.KindOfSport?.Name;
+                    if (!k.Contains(team?.KindOfSport?.Name)) k += team?.KindOfSport?.Name + " ";
                 }
-                if (k == null) return "Not known yet";
+                if (k == string.Empty) return "Not known yet";
                 return k;
             }
         }
-
         public string SportTeamsCount => SportTeams?.Count.ToString() ?? "Does not coach anyone";
     }
 }

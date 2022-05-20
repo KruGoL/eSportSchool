@@ -32,5 +32,6 @@ namespace eSportSchool.Domain.Party {
         //    .GetAll(x => x.Id)?
         //    .Where(x => x.Id == OwnerId)?
         //    .ToList() ?? new List<Trainer>();
+        public string? SportName => KindOfSport?.Name ?? "Unknown";
     }
 }
