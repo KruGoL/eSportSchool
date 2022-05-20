@@ -3,7 +3,7 @@ using eSportSchool.Data.Party;
 
 namespace eSportSchool.Infra.Initializers
 {
-    public class SportTeamsInitializer : BaseInitializer<SportTeamData>
+    public sealed class SportTeamsInitializer : BaseInitializer<SportTeamData>
     {
         public SportTeamsInitializer(eSportSchoolDB? db) : base(db, db?.SportTeams) { }
         internal static SportTeamData createSportTeam(string ownerId, string name, string sportId, string description, DateTime createdDate)

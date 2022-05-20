@@ -13,9 +13,9 @@ namespace eSportSchool.Facade.Party
         [DisplayName("Date of birth")][DataType(DataType.Date)] public DateTime? DoB { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Full name")]public string? FullName { get; set; }
+        [DisplayName("Kind of sport")] public string? KindOfSport { get; set; }
         [DisplayName("Count of sports teams")] public string? SportTeamsCount { get; set; }
         [DisplayName("Photo")] public string? ImgPath { get; set; }
-
     }
     public sealed class TrainerViewFactory : BaseViewFactory<TrainerView, Trainer, TrainerData>
     {
@@ -30,6 +30,7 @@ namespace eSportSchool.Facade.Party
             v.SportTeamsCount = e?.SportTeamsCount;
             v.FullName = e?.ToString();
             v.Gender = e?.Gender;
+            v.KindOfSport = e?.KindOfSport;
             return v;
         }
     }

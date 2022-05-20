@@ -57,6 +57,7 @@ namespace Soft.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Token = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -74,6 +75,7 @@ namespace Soft.Migrations
                     OwnerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SportId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Token = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -92,7 +94,8 @@ namespace Soft.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: true),
                     DoB = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ImgPath = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ImgPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Token = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,7 +109,8 @@ namespace Soft.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TrainerId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    STeamId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    STeamId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Token = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {

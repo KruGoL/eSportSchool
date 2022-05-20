@@ -4,10 +4,10 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public class SportTeamsRepo : Repo<SportTeam, SportTeamData>, ISportTeamsRepo
+    public sealed class SportTeamsRepo : Repo<SportTeam, SportTeamData>, ISportTeamsRepo
     {
         public SportTeamsRepo(eSportSchoolDB? db) : base(db, db?.SportTeams) { }
-        protected override SportTeam toDomain(SportTeamData d) => new (d);
+        protected internal override SportTeam toDomain(SportTeamData d) => new (d);
         internal override IQueryable<SportTeamData> addFilter(IQueryable<SportTeamData> q)
         {
             var y = CurrentFilter;

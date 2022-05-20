@@ -12,7 +12,7 @@ namespace eSportSchool.Infra
         public override bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
         public override List<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
         public override TDomain Get(string id) => GetAsync(id).GetAwaiter().GetResult();
-        public override List<TDomain> GetAll<TKey>(Func<TDomain, TKey>? orderBy = null)
+        public override List<TDomain> GetAll(Func<TDomain, dynamic>? orderBy = null)
         {
             var r = new List<TDomain>();
             if (set is null) return r;
@@ -77,9 +77,11 @@ namespace eSportSchool.Infra
         {
             try
             {
+                if (db is null) return false;
+                db.ChangeTracker.Clear();
                 var d = obj.Data;
-                if (db is not null) db.Attach(d).State = EntityState.Modified;
-                _ = (db is null) ? 0 : await db.SaveChangesAsync();
+                db.Attach(d).State = EntityState.Modified;
+                _ = await db.SaveChangesAsync();
                 return true;
             }
             catch
@@ -87,7 +89,7 @@ namespace eSportSchool.Infra
                 return false;
             }
         }
-        protected abstract TDomain toDomain(TData d);
+        protected internal abstract TDomain toDomain(TData d);
     }
 
 }

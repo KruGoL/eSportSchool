@@ -3,7 +3,7 @@ using eSportSchool.Data.Party;
 
 namespace eSportSchool.Infra.Initializers
 {
-    public class TrainersInitializer : BaseInitializer<TrainerData>
+    public sealed class TrainersInitializer : BaseInitializer<TrainerData>
     {
         public TrainersInitializer(eSportSchoolDB? db) : base(db, db?.Trainers) { }
         internal static TrainerData createTrainer(string firstName, string lastName, IsoGender gender, DateTime dayOfBirth,string imgPath = "default.jpg")

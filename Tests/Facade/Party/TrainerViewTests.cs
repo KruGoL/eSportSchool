@@ -15,6 +15,8 @@ namespace eSportSchool.Tests.Facade.Party
         [TestMethod] public void LastNameTest() => isProperty<string?>();
         [TestMethod] public void GenderTest() => isProperty<IsoGender>();
         [TestMethod] public void DoBTest() => isProperty<DateTime?>();
+        [TestMethod] public void ImgPathTest() => isProperty<string?>();
+
         [TestMethod] public void DescriptionTest() => isProperty<string?>();
         [TestMethod] public void FullNameTest() => isProperty<string?>();
         [TestMethod] public void SportTeamsCountTest() => isProperty<string?>();

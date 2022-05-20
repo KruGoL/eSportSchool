@@ -4,10 +4,10 @@ using eSportSchool.Domain.Party;
 
 namespace eSportSchool.Infra.Party
 {
-    public class TrainersRepo : Repo<Trainer, TrainerData>, ITrainersRepo
+    public sealed class TrainersRepo : Repo<Trainer, TrainerData>, ITrainersRepo
     {
-        public TrainersRepo(eSportSchoolDB db) : base(db, db.Trainers) { }
-        protected override Trainer toDomain(TrainerData d) => new (d);
+        public TrainersRepo(eSportSchoolDB? db) : base(db, db?.Trainers) { }
+        protected internal override Trainer toDomain(TrainerData d) => new (d);
         internal override IQueryable<TrainerData> addFilter(IQueryable<TrainerData> q)
         {
             var y = CurrentFilter;
@@ -17,7 +17,7 @@ namespace eSportSchool.Infra.Party
                 || x.LastName.Contains(y)
                 || x.Id.Contains(y)
                 || x.DoB.ToString().Contains(y)
-                || x.ImgPath.ToString().Contains(y)
+                || x.ImgPath.Contains(y)
                 || x.Gender.ToString().Contains(y));
         }
     }

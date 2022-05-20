@@ -19,6 +19,18 @@ namespace eSportSchool.Domain.Party {
         //    .GetAll(x => x.Id)?
         //    .Where(x => x.Id == SportId).FirstOrDefault();
         public KindOfSport? KindOfSport => GetRepo.Instance<IKindOfSportRepo>()?.Get(SportId);
-
+        //public List<TrainerSportTeam> TrainerSportTeams
+        //    => GetRepo.Instance<ITrainerSportTeamsRepo>()?
+        //    .GetAll(x => x.STeamId)?
+        //    .Where(x => x.STeamId == Id)?
+        //    .ToList() ?? new List<TrainerSportTeam>();
+        //public List<Trainer?> Trainers
+        //    => TrainerSportTeams
+        //    .Select(x => x.Trainer)
+        //    .ToList() ?? new List<Trainer?>();
+        //public List<Trainer> Trainers => GetRepo.Instance<ITrainersRepo>()?
+        //    .GetAll(x => x.Id)?
+        //    .Where(x => x.Id == OwnerId)?
+        //    .ToList() ?? new List<Trainer>();
     }
 }

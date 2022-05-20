@@ -18,7 +18,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(o => {
+    o.Conventions.AuthorizePage("/Trainers/Delete");
+    //o.Conventions.AuthorizePage("/Trainers/Create");
+    //o.Conventions.AuthorizePage("/Trainers/Edit");
+    //o.Conventions.AuthorizePage("/KindOfSports/Create");
+    //o.Conventions.AuthorizePage("/KindOfSports/Edit");
+    //o.Conventions.AuthorizePage("/KindOfSports/Delete");
+    //o.Conventions.AuthorizePage("/SportTeams/Create");
+    //o.Conventions.AuthorizePage("/SportTeams/Edit");
+    //o.Conventions.AuthorizePage("/SportTeams/Delete");
+});
 builder.Services.AddTransient<ISportTeamsRepo, SportTeamsRepo>();
 builder.Services.AddTransient<ITrainersRepo, TrainersRepo>();
 builder.Services.AddTransient<IKindOfSportRepo, KindOfSportRepo>();

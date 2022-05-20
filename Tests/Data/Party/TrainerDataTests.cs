@@ -12,5 +12,6 @@ namespace eSportSchool.Tests.Data.Party
         [TestMethod] public void LastNameTest() => isProperty<string?>();
         [TestMethod] public void GenderTest() => isProperty<IsoGender?>();
         [TestMethod] public void DoBTest() => isProperty<DateTime?>();
+        [TestMethod] public void ImgPathTest() => isProperty<string?>();
     }
 }

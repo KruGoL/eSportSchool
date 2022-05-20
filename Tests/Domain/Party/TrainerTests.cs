@@ -15,6 +15,7 @@ namespace eSportSchool.Tests.Domain.Party
         [TestMethod] public void LastNameTest() => isReadOnly(obj.Data.LastName);
         [TestMethod] public void GenderTest() => isReadOnly(obj.Data.Gender);
         [TestMethod] public void DoBTest() => isReadOnly(obj.Data.DoB);
+        [TestMethod] public void ImgPathTest() => isReadOnly(obj.Data.ImgPath);
         [TestMethod] public void FullNameTest() {
             var expected = $"{obj.FirstName} {obj.LastName}";
             areEqual(expected, obj.FullName);

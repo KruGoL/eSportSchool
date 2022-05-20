@@ -25,7 +25,7 @@ namespace eSportSchool.Tests {
             client = host.CreateClient();
         }
         protected virtual object? isReadOnly<T>(string? callingMethod = null) => null;
-        protected virtual void arePropertiesEqual(object? x, object? y) { isInconclusive(); }
+        protected virtual void arePropertiesEqual(object? x, object? y, params string[] excluded) { isInconclusive(); }
         protected void itemTest<TRepo, TObj, TData>(string id, Func<TData, TObj> toObj, Func<TObj?> getObj)
             where TRepo : class, IRepo<TObj> where TObj : UniqueEntity {
             var c = isReadOnly<TObj>(nameof(itemTest));
@@ -43,7 +43,7 @@ namespace eSportSchool.Tests {
             }
             r.PageSize = 30;
             areEqual(cnt, r.Get().Count);
-            areEqualProperties(d, getObj());
+            areEqualProperties(d, getObj(), nameof(UniqueData.Token));
         }
 
         protected void itemsTest<TRepo, TObj, TData>(Action<TData> setId, Func<TData, TObj> toObj, Func<List<TObj>> getList)
@@ -74,7 +74,7 @@ namespace eSportSchool.Tests {
             foreach (var d in list) {
                 var y = l.Find(z => z.Id == d.Id);
                 isNotNull(y);
-                areEqualProperties(d, y);
+                areEqualProperties(d, y, nameof(UniqueData.Token));
             }
         }
 
@@ -101,7 +101,7 @@ namespace eSportSchool.Tests {
             areEqual(l.Count, c.Count);
             foreach (var e in l) {
                 var a = c.Find(x => x?.Id == detailId(e));
-                arePropertiesEqual(toData(a), relatedToData(e));
+                arePropertiesEqual(toData(a), relatedToData(e), nameof(UniqueData.Token));
             }
         }
     }

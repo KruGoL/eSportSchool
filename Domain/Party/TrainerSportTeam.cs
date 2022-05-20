@@ -9,5 +9,6 @@ namespace eSportSchool.Domain.Party {
         public string STeamId => getValue(Data?.STeamId);
         public Trainer? Trainer => GetRepo.Instance<ITrainersRepo>()?.Get(TrainerId);
         public SportTeam? SportTeam => GetRepo.Instance<ISportTeamsRepo>()?.Get(STeamId);
+        public KindOfSport? KindOfSport => GetRepo.Instance<ISportTeamsRepo>()?.Get(STeamId)?.KindOfSport;
     }
 }

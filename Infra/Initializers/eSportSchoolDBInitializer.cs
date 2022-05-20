@@ -1,6 +1,4 @@
-﻿using eSportSchool.Infra.Initializers.Combined;
-using eSportSchool.Infra.Initializers.Sport;
-
+﻿
 namespace eSportSchool.Infra.Initializers
 {
     public static class eSportSchoolDBInitializer

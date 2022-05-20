@@ -4,12 +4,17 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 
 namespace eSportSchool.Tests
 {
     public abstract class BaseTests<TClass, TBaseClass> : TypeTests where TClass : class where TBaseClass : class {
         protected TClass obj;
+        private readonly BindingFlags allFlags = BindingFlags.Public
+            | BindingFlags.Instance
+            | BindingFlags.NonPublic
+            | BindingFlags.Static;
         protected BaseTests() => obj = createObj();
         protected abstract TClass createObj();
 
@@ -40,7 +45,7 @@ namespace eSportSchool.Tests
 
         protected PropertyInfo? getPropertyInfo(string callingMethod) {
             var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
-            return obj.GetType().GetProperty(memberName);
+            return obj.GetType().GetProperty(memberName, allFlags);
         }
         protected object? getProperty<T>(ref T? value, bool isReadOnly, string callingMethod) {
             var propertyInfo = getPropertyInfo(callingMethod);
@@ -67,11 +72,12 @@ namespace eSportSchool.Tests
             }
             return string.Empty;
         }
-        protected override void arePropertiesEqual(object? x, object? y) {
+        protected override void arePropertiesEqual(object? x, object? y, params string[] excluded) {
             var e = Array.Empty<PropertyInfo>();
             var px = x?.GetType()?.GetProperties() ?? e;
             var hasProperties = false;
             foreach (var p in px) {
+                if (excluded?.Contains(p.Name) ?? false) continue;
                 var a = p.GetValue(x, null);
                 var py = y?.GetType()?.GetProperty(p.Name);
                 if (py is null) continue;
@@ -82,5 +88,9 @@ namespace eSportSchool.Tests
             isTrue(hasProperties, $"No properties found for {x}");
         }
         [TestMethod] public void BaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));
+        protected void isAbstractMethod(string name, params Type[] args) {
+            var mi = typeof(TClass).GetMethod(name, args);
+            areEqual(true, mi?.IsAbstract, name);
+        }
     }
 }
