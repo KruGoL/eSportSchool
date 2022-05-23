@@ -12,5 +12,6 @@ namespace eSportSchool.Domain.Party {
         public DateTime CreatedDate => getValue(Data?.CreatedDate);
         public override string ToString() => $"{Name} : {KindOfSport?.Name} ({CreatedDate})";
         public KindOfSport? KindOfSport => GetRepo.Instance<IKindOfSportRepo>()?.Get(SportId);
+        public string? SportName => KindOfSport?.Name ?? "Unknown";
     }
 }
