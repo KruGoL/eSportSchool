@@ -41,6 +41,8 @@ using (var scope = app.Services.CreateScope()) {
     var db = scope.ServiceProvider.GetService<eSportSchoolDB>();
     _ = (db?.Database?.EnsureCreated());
     eSportSchoolDBInitializer.Init(db);
+    var services = scope.ServiceProvider;
+    await SeedData.Initialize(services);
 }
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
