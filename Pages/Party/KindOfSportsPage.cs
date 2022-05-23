@@ -1,4 +1,5 @@
-﻿using eSportSchool.Domain.Party;
+﻿using eSportSchool.Domain;
+using eSportSchool.Domain.Party;
 using eSportSchool.Facade.Party;
 
 namespace eSportSchool.Pages.Party {
@@ -13,6 +14,14 @@ namespace eSportSchool.Pages.Party {
             nameof(KindOfSportView.Name),
             nameof(KindOfSportView.Description),
         };
+        public List<SportTeam?> SportTeams => toObject(Item).SportTeams;
+        public static List<Trainer>? Trainers => GetRepo.Instance<ITrainersRepo>()?.Get().ToList();
+        public static string TrainerName(object? trainerId = null) {
+            string? trId = trainerId?.ToString();
+            foreach (Trainer? trainer in Trainers)
+                if (trainer?.Id == trId) return trainer?.FullName ?? "Unspecified";
+            return "Unspecified";
+        }
     }
     
 }

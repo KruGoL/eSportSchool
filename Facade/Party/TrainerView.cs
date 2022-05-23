@@ -23,6 +23,7 @@ namespace eSportSchool.Facade.Party
         public override Trainer Create(TrainerView? v) {
             v ??= new TrainerView();
             v.Gender ??= IsoGender.NotApplicable;
+            v.KindOfSport ??= KindOfSport.DefaultStr;
             return base.Create(v);
         }
         public override TrainerView Create(Trainer? e) {

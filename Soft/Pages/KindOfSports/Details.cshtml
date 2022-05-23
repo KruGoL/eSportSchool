@@ -1,11 +1,48 @@
 ﻿@page
+@using eSportSchool.Facade.Party
+@using eSportSchool.Pages.Party
 @model eSportSchool.Pages.Party.KindOfSportsPage
 
 @{
     Layout = "_Details";
     ViewData["Id"] = Model?.Item.Id ?? string.Empty;
+    var columns = new[] { 
+        nameof(SportTeamView.Name), 
+        nameof(SportTeamView.Description),
+        nameof(SportTeamView.OwnerName)
+    };
+    object? getValue<T>(string propertyname, T item) {
+        var pi = typeof(T).GetProperty(propertyname);
+        if (propertyname == nameof(SportTeamView.OwnerName)) return KindOfSportsPage.TrainerName(pi?.GetValue(item));
+        return pi?.GetValue(item);
+    }
 }
 
 <body>
 <partial name="_ShowKindOfSport"/>
+@if (Model.SportTeams.Count > 0) {
+<br>
+        <h4>Sport Teams</h4>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    @foreach (var name in columns) {<td> @Html.Raw(name) </td>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SportTeams) {
+                    <tr>
+                        @foreach (var name in columns) {
+                            <td>
+                                @Html.Raw(getValue(name, item))
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+    </table>
+}
 </body>

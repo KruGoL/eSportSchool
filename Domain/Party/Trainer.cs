@@ -19,10 +19,6 @@ namespace eSportSchool.Domain.Party {
             .GetAll(x => x.TrainerId)?
             .Where(x => x.TrainerId == Id)?
             .ToList() ?? new List<TrainerSportTeam>();
-        //public List<SportTeam?> SportTeams
-        //    => TrainerSportTeams
-        //    .Select(x => x.SportTeam)
-        //    .ToList() ?? new List<SportTeam?>();
         public List<SportTeam> SportTeams => GetRepo.Instance<ISportTeamsRepo>()?
             .GetAll(x => x.OwnerId)?
             .Where(x => x.OwnerId == Id)?

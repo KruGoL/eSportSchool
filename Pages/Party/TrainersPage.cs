@@ -35,7 +35,7 @@ namespace eSportSchool.Pages.Party
         public override object? GetValue(string name, TrainerView v)
         {
             var r = base.GetValue(name, v);          
-            return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender)r) : r;
+            return name == nameof(TrainerView.Gender) ? GenderDescription((IsoGender?)r) : r;
         }
         public List<SportTeam?> SportTeams => toObject(Item).SportTeams;
     }

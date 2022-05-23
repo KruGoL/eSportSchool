@@ -11,6 +11,11 @@ namespace eSportSchool.Facade.Party {
     }
     public sealed class TrainerSportTeamViewFactory : BaseViewFactory<TrainerSportTeamView, TrainerSportTeam, TrainerSportTeamData> {
         protected override TrainerSportTeam toEntity(TrainerSportTeamData d) => new(d);
+        public override TrainerSportTeamView Create(TrainerSportTeam? e) {
+            var v = base.Create(e);
+            v.KindOfSport = e?.KindOfSport ?? "Not known";
+            return v;
+        }
     }
 
 }
