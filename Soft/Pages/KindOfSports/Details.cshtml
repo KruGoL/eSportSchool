@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Reflection
 @using eSportSchool.Facade.Party
 @using eSportSchool.Pages.Party
 @model eSportSchool.Pages.Party.KindOfSportsPage
@@ -12,9 +13,13 @@
         nameof(SportTeamView.OwnerName)
     };
     object? getValue<T>(string propertyname, T item) {
-        var pi = typeof(T).GetProperty(propertyname);
-        if (propertyname == nameof(SportTeamView.OwnerName)) return KindOfSportsPage.TrainerName(pi?.GetValue(item));
-        return pi?.GetValue(item);
+    PropertyInfo? pi;
+    if (propertyname ==  nameof(SportTeamView.OwnerName)){
+        pi = typeof(T).GetProperty( nameof(SportTeamView.OwnerId));
+        return KindOfSportsPage.TrainerName(pi?.GetValue(item));
+    }
+    pi = typeof(T).GetProperty(propertyname);
+    return pi?.GetValue(item);
     }
 }
 
