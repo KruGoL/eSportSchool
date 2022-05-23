@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="eSportSchool.Data.Party.KindOfSportData" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Party\KindOfSportData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eSportSchool.Data.Party.SportTeamData">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Party\SportTeamData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eSportSchool.Data.Party.TrainerData">
+    <Position X="9" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACAAAAAAAIACAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Party\TrainerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eSportSchool.Data.Party.TrainerSportTeamData">
+    <Position X="4" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Party\TrainerSportTeamData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eSportSchool.Data.NamedData">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NamedData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eSportSchool.Data.UniqueData">
+    <Position X="6.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>UniqueData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="eSportSchool.Data.Party.IsoGender">
+    <Position X="1.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Party\IsoGender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
