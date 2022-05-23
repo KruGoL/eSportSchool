@@ -19,15 +19,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages(o => {
-    o.Conventions.AuthorizePage("/Trainers/Delete");
-    //o.Conventions.AuthorizePage("/Trainers/Create");
-    //o.Conventions.AuthorizePage("/Trainers/Edit");
-    //o.Conventions.AuthorizePage("/KindOfSports/Create");
-    //o.Conventions.AuthorizePage("/KindOfSports/Edit");
-    //o.Conventions.AuthorizePage("/KindOfSports/Delete");
-    //o.Conventions.AuthorizePage("/SportTeams/Create");
-    //o.Conventions.AuthorizePage("/SportTeams/Edit");
-    //o.Conventions.AuthorizePage("/SportTeams/Delete");
+    o.Conventions.AuthorizePage("/KindOfSports/Create");
+    o.Conventions.AuthorizePage("/KindOfSports/Edit");
+    o.Conventions.AuthorizePage("/KindOfSports/Delete");
 });
 builder.Services.AddTransient<ISportTeamsRepo, SportTeamsRepo>();
 builder.Services.AddTransient<ITrainersRepo, TrainersRepo>();
@@ -44,7 +38,6 @@ using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
     await SeedData.Initialize(services);
 }
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();

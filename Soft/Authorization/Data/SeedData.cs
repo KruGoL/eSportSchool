@@ -14,24 +14,7 @@ namespace Soft.Authorization.Data
                 await EnsureRole(serviceProvider, UserRoles.AdministratorRole);
                 await EnsureRole(serviceProvider, UserRoles.TrainerRole);
                 await EnsureRole(serviceProvider, UserRoles.UserRole);
-                var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                var _user = await UserManager.FindByEmailAsync("admin@admin.com");
-                if (_user == null)
-                {
-                    var user = new IdentityUser
-                    {
-                        UserName = "admin@admin.com",
-                        Email = "admin@admin.com",
-                        EmailConfirmed = true
-                    };
-                    string adminPassword = "!Admin1234";
-                    var createUser = UserManager.CreateAsync(user, adminPassword).Result;
-                    if (createUser.Succeeded)
-                    {
-                        //here we tie the new user to the role
-                        await UserManager.AddToRoleAsync(user, UserRoles.AdministratorRole);
-                    }
-                }
+                await AddUser(serviceProvider, "admin@admin.com", "admin@admin.com", "!Admin1234", UserRoles.AdministratorRole,true);
             }
         }
         private static async Task EnsureRole(IServiceProvider serviceProvider, string role)
@@ -41,6 +24,26 @@ namespace Soft.Authorization.Data
             if (!await roleManager.RoleExistsAsync(role))
             {
                 IdentityResult IR = await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+        private static async Task AddUser(IServiceProvider SP , string userName , string email, string password , string role , bool emailConfirmed = true)
+        {
+            var UserManager = SP.GetRequiredService<UserManager<IdentityUser>>();
+            var _user = await UserManager.FindByEmailAsync(email);
+            if (_user == null)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = userName,
+                    Email = email,
+                    EmailConfirmed = emailConfirmed
+                };
+                string adminPassword = password;
+                var createUser = UserManager.CreateAsync(user, adminPassword).Result;
+                if (createUser.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user, role);
+                }
             }
         }
     }

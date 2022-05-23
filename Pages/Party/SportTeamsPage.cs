@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eSportSchool.Pages.Party {
-    [Authorize]
     public class SportTeamsPage : PagedPage<SportTeamView, SportTeam, ISportTeamsRepo>
     {
         private readonly IKindOfSportRepo sports;
