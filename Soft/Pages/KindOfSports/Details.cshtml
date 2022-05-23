@@ -12,9 +12,11 @@
         nameof(SportTeamView.OwnerName)
     };
     object? getValue<T>(string propertyname, T item) {
+        if (propertyname == nameof(SportTeamView.OwnerName)) propertyname = nameof(SportTeamView.OwnerId);
         var pi = typeof(T).GetProperty(propertyname);
-        if (propertyname == nameof(SportTeamView.OwnerName)) return KindOfSportsPage.TrainerName(pi?.GetValue(item));
-        return pi?.GetValue(item);
+        object? result = pi?.GetValue(item);
+        if (propertyname == nameof(SportTeamView.OwnerId)) return KindOfSportsPage.TrainerName(result);
+        return result;
     }
 }
 
