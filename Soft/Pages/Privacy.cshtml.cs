@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace eSportSchool.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
